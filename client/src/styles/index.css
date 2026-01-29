@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+
+@layer base {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  
+}
+
+
+/* 1. Theme Configuration */
+@theme {
+  --font-inter: "Inter", system-ui, sans-serif;
+  
+  /* Adding custom animations to the theme */
+  --animate-spin: spin 1s linear infinite;
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+html {
+  font-family: var(--font-inter);
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #021733; 
+}
+
+svg {
+  width: 40px;
+  height: 40px;
+  max-width: 100%;
+  max-height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 3. Custom Utilities (Replacing @layer components) */
+@utility btn {
+  @apply px-4 py-2 rounded-lg font-medium transition duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+@utility btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+@utility btn-secondary {
+  @apply bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500;
+}
+
+@utility btn-danger {
+  @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+
+@utility input {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+@utility card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200;
+}
+
+@utility card-hover {
+  @apply hover:shadow-md transition-shadow duration-200;
+}
+
+/* 4. Custom Layout Classes */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgb(141, 168, 187);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* 5. Scrollbars & Misc */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
