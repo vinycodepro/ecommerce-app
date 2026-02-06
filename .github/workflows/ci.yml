@@ -15,21 +15,28 @@ jobs:
         with:
           node-version: 18
 
-      # Backend
+      # Backend - Using the direct path seen in your sidebar
       - name: Install server
-        # We add 'ecommerce-app' to the path because that's the real folder name
-        working-directory: ecommerce-app/server 
-        run: npm install
+        # We use ./server because that is where the file is relative to ci.yml
+        working-directory: server 
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "Searching for package.json..."
+            find . -name "package.json"
+            exit 1
+          fi
 
       - name: Run backend tests
-        working-directory: ecommerce-app/server
+        working-directory: server
         run: npm test || echo "No backend tests yet"
 
       # Frontend
       - name: Install client
-        working-directory: ecommerce-app/client
+        working-directory: client
         run: npm install
 
       - name: Run frontend tests
-        working-directory: ecommerce-app/client
+        working-directory: client
         run: npm test || echo "No frontend tests yet"
