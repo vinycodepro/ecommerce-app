@@ -14,16 +14,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          # This caches your npm dependencies so builds get faster over time!
-          cache: 'npm'
-          cache-dependency-path: |
-            server/package-lock.json
-            client/package-lock.json
 
-      # Backend
+      # Backend - Using the direct path seen in your sidebar
       - name: Install server
-        working-directory: server
-        run: npm install
+        # We use ./server because that is where the file is relative to ci.yml
+        working-directory: server 
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          else
+            echo "Searching for package.json..."
+            find . -name "package.json"
+            exit 1
+          fi
 
       - name: Run backend tests
         working-directory: server
