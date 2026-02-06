@@ -22,18 +22,18 @@ jobs:
 
       # Backend
       - name: Install server
-        working-directory: ./server
+        working-directory: server
         run: npm install
 
       - name: Run backend tests
-        working-directory: ./server
+        working-directory: server
         run: npm test || echo "No backend tests yet"
 
       # Frontend
       - name: Install client
-        working-directory: ./client
+        working-directory: client
         run: npm install
 
       - name: Run frontend tests
-        working-directory: ./client
+        working-directory: client
         run: npm test || echo "No frontend tests yet"
