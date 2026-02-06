@@ -7,30 +7,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
+          # This caches your npm dependencies so builds get faster over time!
+          cache: 'npm'
+          cache-dependency-path: |
+            server/package-lock.json
+            client/package-lock.json
 
       # Backend
       - name: Install server
-        run: |
-          cd server
-          npm install
+        working-directory: ./server
+        run: npm install
 
       - name: Run backend tests
-        run: |
-          cd server
-          npm test || echo "No backend tests yet"
+        working-directory: ./server
+        run: npm test || echo "No backend tests yet"
 
       # Frontend
       - name: Install client
-        run: |
-          cd client
-          npm install
+        working-directory: ./client
+        run: npm install
 
       - name: Run frontend tests
-        run: |
-          cd client
-          npm test || echo "No frontend tests yet"
+        working-directory: ./client
+        run: npm test || echo "No frontend tests yet"
