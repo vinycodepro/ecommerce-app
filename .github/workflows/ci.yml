@@ -15,9 +15,8 @@ jobs:
         with:
           node-version: 18
 
-      # Backend - Using the direct path seen in your sidebar
+      
       - name: Install server
-        # We use ./server because that is where the file is relative to ci.yml
         working-directory: server 
         run: |
           if [ -f package.json ]; then
