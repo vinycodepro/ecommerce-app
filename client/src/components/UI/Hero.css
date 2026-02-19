@@ -1,0 +1,58 @@
+/* Hero.css */
+.hero-section {
+  height: 90vh; /* Takes up most of the screen */
+  width: 100%;
+  
+  /* Replace 'hero-bg.jpg' with your actual file name */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                    url('../../assets/background.jpg');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Flexbox centers everything perfectly */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff; /* Clean white text */
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-section h1 {
+  font-size: 3rem; /* Large and bold */
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 600px; 
+  opacity: 0.9; 
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+.shop-btn {
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.shop-btn:hover {
+  transform: scale(1.05); /* Subtle zoom effect on hover */
+  background-color: #f0f0f0;
+}

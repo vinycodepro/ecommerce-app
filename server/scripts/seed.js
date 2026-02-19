@@ -1,14 +1,18 @@
 // scripts/seed.js
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+//import bcrypt from 'bcrypt.js';
 import dotenv from 'dotenv';
 import User from '../models/User.js';
 import Product from '../models/Product.js';
 import dns from 'node:dns';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: __dirname + '/../.env' });
 
 const categories = {
   clothing: ['T-Shirts', 'Jeans', 'Jackets', 'Activewear'],
@@ -68,7 +72,8 @@ const sampleProducts = [
 
 const seedDatabase = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGO_URI);
+    
     console.log('Connected to MongoDB');
 
     // Clear existing data

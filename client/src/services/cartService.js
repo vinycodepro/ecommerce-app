@@ -6,7 +6,7 @@ export const cartService = {
     return response.data;
   },
     // Get cart items
-    async getCartItems() {  
+    async getCart() {  
     const response = await api.get('/cart/items');
     return response.data;
     }

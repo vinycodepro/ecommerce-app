@@ -1,4 +1,5 @@
-const generateToken = require('../utils/generateToken');
+import User from '../models/User.js';
+import generateToken from '../utils/generateToken.js';
 
 const authUser = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
@@ -9,5 +10,8 @@ const authUser = async (req, res) => {
       name: user.name,
       token: generateToken(user._id), 
     });
+  }
+    else {
+      res.status(401).json({ message: 'Invalid email or password' });
   }
 };

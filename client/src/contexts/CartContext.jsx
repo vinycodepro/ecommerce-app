@@ -30,7 +30,7 @@ export const CartProvider = ({ children }) => {
   const fetchCart = async () => {
     try {
       const cartData = await cartService.getCart();
-      setCart(cartData);
+      setCart(cartData || []);
     } catch (error) {
       console.error('Error fetching cart:', error);
       toast.error('Failed to load cart');
@@ -122,6 +122,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartItemCount = () => {
+    if (!Array.isArray(cart)) return 0;
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
@@ -172,3 +173,5 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
+export { CartContext };

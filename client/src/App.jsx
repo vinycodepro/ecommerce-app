@@ -7,9 +7,9 @@ import { CartProvider } from './contexts/CartContext';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import Home from './pages/Home/Home';
-//import Products from './pages/Products/Products';
+import Products from './pages/Products/Products';
 //import ProductDetail from './pages/Products/ProductDetail';
-//import Cart from './pages/Cart/Cart';
+import Cart from './pages/Cart/Cart';
 //import Checkout from './pages/Checkout/Checkout';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
@@ -19,7 +19,7 @@ import Register from './pages/Auth/Register';
 //import Wishlist from './pages/User/Wishlist';
 //import AdminDashboard from './pages/Admin/Dashboard';
 //import AdminProducts from './pages/Admin/Products/AdminProducts';
-//import AddProduct from './pages/Admin/Products/AddProduct';
+import AddProduct from './pages/Admin/Products/AddProduct';
 //import EditProduct from './pages/Admin/Products/EditProduct';
 //import AdminOrders from './pages/Admin/Orders/AdminOrders';
 //import AdminUsers from './pages/Admin/Users/AdminUsers';
@@ -41,20 +41,20 @@ function App() {
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
-                {/*<Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetail />} />*/}
+                <Route path="/products" element={<Products />} />
+                {/*<Route path="/products/:id" element={<ProductDetail />} />*/}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 {/*<Route path="/loading" element={<Loading />} />*/}
                 {/*<Route path="/error" element={<Error />} />*/}
 
                 {/* Protected User Routes */}
-{/*                {<Route path="/cart" element={
+              <Route path="/cart" element={
                   <ProtectedRoute>
                     <Cart />
                   </ProtectedRoute>
                 } />
-              <Route path="/checkout" element={
+              {/*<Route path="/checkout" element={
                   <ProtectedRoute>
                     <Checkout />
                   </ProtectedRoute>
@@ -79,6 +79,7 @@ function App() {
                     <Wishlist />
                   </ProtectedRoute>
                 } />
+                 */}
 
                 {/* Admin Routes */}
                 {/*<Route path="/admin" element={

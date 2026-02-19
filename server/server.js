@@ -17,11 +17,15 @@ connectDB();
 const app = express();
 
 // Security middleware
-app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: process.env.CLIENT_URL || "http://localhost:3000",
   credentials: true
 }));
+
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin"}
+}));
+
 
 // Rate limiting
 const limiter = rateLimit({
@@ -37,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/products.js';
+import cartRoutes from './routes/cart.js';
 import orderRoutes from './routes/orders.js';
 import userRoutes from './routes/users.js';
 import paymentRoutes from './routes/payments.js';
@@ -44,6 +49,7 @@ import reviewRoutes from './routes/reviews.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/payments', paymentRoutes);
