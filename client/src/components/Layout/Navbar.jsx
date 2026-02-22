@@ -5,6 +5,7 @@ import { useCart } from "@/contexts/CartContext";
 import { mainLinks } from "@/config/navigation";
 import NavItem from "./Navbar/NavItem";
 import UserMenu from "./UserMenu";
+import Searchbar from "../UI/Searchbar";
 import {
   ShoppingCartIcon,
   Bars3Icon,
@@ -30,6 +31,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-white text-xl font-bold drop-shadow-lg">Vincy<span className="text-yellow-300">Web</span></Link>
+        <Searchbar />
+        
 
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-4 items-center">
