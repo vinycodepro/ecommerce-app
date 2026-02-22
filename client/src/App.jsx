@@ -13,7 +13,7 @@ import Cart from './pages/Cart/Cart';
 //import Checkout from './pages/Checkout/Checkout';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
-//import Profile from './pages/User/Profile';
+import Profile from './pages/User/Profile';
 //import Orders from './pages/User/Orders';
 //import OrderDetails from './pages/User/OrderDetails';
 //import Wishlist from './pages/User/Wishlist';
@@ -26,7 +26,7 @@ import AddProduct from './pages/Admin/Products/AddProduct';
 //import Analytics from './pages/Admin/Analytics/Analytics';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AdminRoute from './components/Auth/AdminRoute';
-//import Loading from './pages/Shared/Loading';
+import Loading from './pages/Shared/Loading';
 //import Error from './pages/Shared/Error';
 //import NotFound from './pages/Shared/NotFound';
 
@@ -45,10 +45,10 @@ function App() {
                 {/*<Route path="/products/:id" element={<ProductDetail />} />*/}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                {/*<Route path="/loading" element={<Loading />} />*/}
+                <Route path="/loading" element={<Loading />} />
                 {/*<Route path="/error" element={<Error />} />*/}
 
-                {/* Protected User Routes */}
+                {/* Protected User Routes 
               <Route path="/cart" element={
                   <ProtectedRoute>
                     <Cart />
@@ -59,11 +59,14 @@ function App() {
                     <Checkout />
                   </ProtectedRoute>
                 } />
+               */}
+
                 <Route path="/profile" element={
                   <ProtectedRoute>
                     <Profile />
                   </ProtectedRoute>
                 } />
+                  {/*
                 <Route path="/orders" element={
                   <ProtectedRoute>
                     <Orders />
@@ -118,11 +121,10 @@ function App() {
                   </AdminRoute>
                 } />*/}
 
-
+                
                 {/* 404 Route */}
-                {/*}
-                <Route path="*" element={<NotFound />} />
-                */}
+                {/* <Route path="*" element={<NotFound />} /> */}
+                  
 
               </Routes>
               

@@ -21,11 +21,18 @@ export const registerUser = async (req, res) => {
     });
 
     if (user) {
+      const token =jwt.sign(
+        { id: user._id },
+        process.env.JWT_SECRET,
+        { expiresIn: '30d' }
+
+      );
       res.status(201).json({
         _id: user._id,
         name: user.name,
         email: user.email,
-        // You would usually generate a JWT token here too
+        token,
+        
       });
     }
   } catch (error) {

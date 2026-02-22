@@ -1,8 +1,2 @@
-POST http://localhost:5000/api/users/register
-Content-Type: application/json
-
-{
-  "name": "george",
-  "email": "vigrat7@gmail.com",
-  "password": "typw12839"
-}
+### Get Current User Without Token (Should Fail)
+GET http://localhost:5000/api/auth/me

@@ -1,15 +1,16 @@
 // ProfilePage.jsx
 import React, { useState, useEffect } from "react";
-import ProfileHeader from "../components/ProfileHeader";
-import ProfileTabs from "../components/ProfileTabs";
+import ProfileHeader from "@/components/Profile/ProfileHeader";
+import ProfileTabs from "@/components/Profile/ProfileTabs";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // or use cookies
+    //cookies
     fetch("/api/profile", {
-      headers: { Authorization: `Bearer ${token}` },
+      method: "GET",
+      credentials: "include" // Include cookies for authentication,
     })
       .then(res => res.json())
       .then(data => setUser(data))

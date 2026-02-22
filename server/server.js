@@ -7,6 +7,7 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import connectDB from './config/database.js';
 import dns from 'node:dns';
+import cookieParser from 'cookie-parser';
 
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
@@ -26,7 +27,7 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin"}
 }));
 
-
+app.use(cookieParser());
 // Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
