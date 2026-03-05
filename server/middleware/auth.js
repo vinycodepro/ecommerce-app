@@ -7,19 +7,24 @@ const auth = async (req, res, next) => {
     const token = req.cookies?.token || req.header('Authorization')?.replace('Bearer ', '');
     
     if (!token) {
+      console.log('checking for token, found none');
       return res.status(401).json({ message: 'No token, authorization denied' });
     }
-
+    
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.userId).select('-password');
+    const idToFind = decoded.userId || decoded.id || decoded._id;
+    const user = await User.findById(idToFind).select('-password');
     
     if (!user) {
+     console.log('user not found in db for token:', idToFind);
       return res.status(401).json({ message: 'Token is not valid' });
     }
 
     req.user = user;
     next();
   } catch (error) {
+    console.error('JWT Error name:', error.name);
+    console.error('JWT Error message:', error.message);
     res.status(401).json({ message: 'Token is not valid' });
   }
 };

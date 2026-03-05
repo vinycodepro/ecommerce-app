@@ -1,9 +1,14 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 
 const ProtectedRoutes = () => {
-  const token = localStorage.getItem("token");
+  const { user, loading } = useAuth();
 
-  if (!token) {
+  if (loading) {
+    return <p>Checking authentication...</p>;
+  }
+
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
 

@@ -7,13 +7,15 @@ const ProfilePage = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    //cookies
-    fetch("/api/profile", {
+    fetch("/api/auth/me", {
       method: "GET",
-      credentials: "include" // Include cookies for authentication,
+      credentials: "include"
     })
       .then(res => res.json())
-      .then(data => setUser(data))
+      .then(data => {
+        setUser(data);
+        console.log("Fetched user profile:", data);
+      })
       .catch(err => console.error(err));
   }, []);
 

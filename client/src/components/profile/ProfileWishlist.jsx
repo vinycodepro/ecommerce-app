@@ -17,4 +17,5 @@ const ProfileWishlist = ({ wishlist }) => {
   );
 };
 
+
 export default ProfileWishlist;

@@ -23,25 +23,21 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const userData = await authService.getCurrentUser();
-        setUser(userData);
-      }
+      setLoading(true);
+      const userData = await authService.getCurrentUser();
+      setUser(userData);
     } catch (error) {
-      console.error('Auth check failed:', error);
-      localStorage.removeItem('token');
+      setUser(null);
     } finally {
       setLoading(false);
     }
   };
-
   const login = async (email, password) => {
     try {
       setError('');
       setLoading(true);
-      const { user: userData, token } = await authService.login(email, password);
-      localStorage.setItem('token', token);
+      const userData = await authService.login(email, password);
+      
       setUser(userData);
       return { success: true };
     } catch (error) {
@@ -58,7 +54,6 @@ export const AuthProvider = ({ children }) => {
       setError('');
       setLoading(true);
       const { user: userData, token } = await authService.register(name, email, password);
-      localStorage.setItem('token', token);
       setUser(userData);
       return { success: true };
     } catch (error) {
@@ -70,8 +65,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
+  const logout = async () => {
+    await authService.logout();
     setUser(null);
     setError('');
   };

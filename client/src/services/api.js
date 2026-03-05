@@ -17,7 +17,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Optionally call logout endpoint here
-      window.location.href = '/login';
+      console.warn('Unauthorized access - logging out');
     }
     return Promise.reject(error);
   }

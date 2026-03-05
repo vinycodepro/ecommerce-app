@@ -1,13 +1,39 @@
 // ProfileSettings.jsx
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 const ProfileSettings = ({ user }) => {
-  const [name, setName] = useState(user.name);
-  const [email, setEmail] = useState(user.email);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const handleUpdate = e => {
+  useEffect(() => {
+    if (user) {
+      setName(user.name || "");
+      setEmail(user.email || "");
+    }
+  }, []);
+
+  const handleUpdate = async e => {
     e.preventDefault();
     // call your API to update user info
+    try 
+    {
+      const response = await fetch("/auth/me", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email }),
+      });
+      if (response.ok) {
+        alert("Profile updated successfully!");
+      } else {
+        alert("Failed to update profile. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("An error occurred while updating your profile. Please try again.");
+    }
     console.log("Updating user info", { name, email });
   };
 

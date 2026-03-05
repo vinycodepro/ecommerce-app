@@ -13,6 +13,10 @@ export const authService = {
     const response = await api.post('/auth/register', { name, email, password });
     return response.data;
   },
+  // Logout user
+  async logout() {
+    await api.post('/auth/logout');
+  },
 
   // Get current user
   async getCurrentUser() {

@@ -1,6 +1,6 @@
 // server/models/User.js
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
   // Add these fields to your server/models/User.js:

@@ -48,6 +48,10 @@ function App() {
                 <Route path="/loading" element={<Loading />} />
                 {/*<Route path="/error" element={<Error />} />*/}
 
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/profile" element={<Profile />} />
+                </Route>
+
                 {/* Protected User Routes 
               <Route path="/cart" element={
                   <ProtectedRoute>
@@ -61,11 +65,6 @@ function App() {
                 } />
                */}
 
-                <Route path="/profile" element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                } />
                   {/*
                 <Route path="/orders" element={
                   <ProtectedRoute>

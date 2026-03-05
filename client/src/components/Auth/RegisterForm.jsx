@@ -196,8 +196,8 @@ const RegisterForm = () => {
         {/* Header */}
         <div className="text-center">
           <Link to="/" className="inline-flex items-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">EC</span>
+            <div className="w-22 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">vincyweb</span>
             </div>
           </Link>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
@@ -241,7 +241,7 @@ const RegisterForm = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <UserIcon className="h-5 w-5 text-gray-400" />
+                  <UserIcon className="h-5 w-5 pr-3 text-gray-400" />
                 </div>
                 <input
                   id="name"
@@ -265,7 +265,7 @@ const RegisterForm = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <EnvelopeIcon className="h-5 w-5 text-gray-400" />
+                  <EnvelopeIcon className="h-5 w-5 pr-3 text-gray-400" />
                 </div>
                 <input
                   id="email"
@@ -289,7 +289,7 @@ const RegisterForm = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <LockClosedIcon className="h-5 w-5 text-gray-400" />
+                  <LockClosedIcon className="h-5 w-5 pr-3 text-gray-400" />
                 </div>
                 <input
                   id="password"
@@ -366,7 +366,7 @@ const RegisterForm = () => {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <LockClosedIcon className="h-5 w-5 text-gray-400" />
+                  <LockClosedIcon className="h-5 w-5 pr-3 text-gray-400" />
                 </div>
                 <input
                   id="confirmPassword"
