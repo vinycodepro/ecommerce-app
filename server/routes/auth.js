@@ -58,7 +58,7 @@ router.post('/register', [
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax', //local dev = strict for production
+      sameSite: 'strict', //local dev = strict for production
       maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
     });
 
@@ -120,7 +120,7 @@ router.post('/login', [
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax', //local || production = strict
+      sameSite: 'strict', //local || production = strict
       maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days   
     });
 
@@ -147,7 +147,7 @@ router.post('/logout', (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax' //local || production = strict
+    sameSite: 'strict' //local || production = strict
   });
   res.json({ message: 'Logged out successfully' });
 });

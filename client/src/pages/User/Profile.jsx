@@ -1,7 +1,7 @@
 // ProfilePage.jsx
 import React, { useState, useEffect } from "react";
-import ProfileHeader from "@/components/Profile/ProfileHeader";
-import ProfileTabs from "@/components/Profile/ProfileTabs";
+import ProfileHeader from "@/components/profile/ProfileHeader";
+import ProfileTabs from "@/components/profile/ProfileTabs";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
