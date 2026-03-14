@@ -1,5 +1,5 @@
 import express from 'express';
-import { body, validationResult } from 'express-validator';
+//import { body, validationResult } from 'express-validator';
 import auth from '../middleware/auth.js';
 import Cart from '../models/Cart.js';
 const router = express.Router();
