@@ -1,11 +1,10 @@
 /* Hero.css */
 .hero-section {
-  height: 90vh; /* Takes up most of the screen */
+  height: 90vh; 
   width: 100%;
   
-  /* Replace 'hero-bg.jpg' with your actual file name */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                    url('../../assets/background.jpg');
+                    url('../../../public/background.jpg');
   
   background-size: cover;
   background-position: center;
