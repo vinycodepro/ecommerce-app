@@ -5,15 +5,13 @@ export default function HeroSection() {
     <section
       className="relative h-screen flex items-center justify-center text-center text-white"
       style={{
-        backgroundImage: "url('../../src/assets/background.jpg')",
+        backgroundImage: "url('/background.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Gradient overlay for readability */}
-      {/*<div className="absolute inset-0 bg-gradient-to-r from-blue-600/70 via-indigo-600/60 to-purple-700/70"></div>
 
-      {/* Hero content */}
       <div className="relative z-10 max-w-3xl px-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Welcome to VincyWeb
