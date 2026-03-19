@@ -10,10 +10,9 @@ export default function HeroSection() {
         backgroundPosition: "center",
       }}
     >
-      {/* Gradient overlay for readability */}
 
-      <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+    <div className="relative z-10 max-w-3xl px-4">
+       <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Welcome to VincyWeb
         </h1>
         <p className="text-xl md:text-2xl mb-8 opacity-90">

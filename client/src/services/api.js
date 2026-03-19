@@ -1,9 +1,11 @@
 // client/src/services/api.js
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-console.log("ENV URL:", import.meta.env.VITE_API_URL);
-console.log("API_URL", API_URL)
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000/api"
+    : "https://ecommerce-app-1-pxaw.onrender.com/api";
+
 
 
 const api = axios.create({
@@ -19,7 +21,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Optionally call logout endpoint here
       console.warn('Unauthorized access - logging out');
     }
     return Promise.reject(error);

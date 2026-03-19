@@ -19,8 +19,19 @@ connectDB();
 const app = express();
 
 // Security middleware
+const allowedOrigins = [
+  "https://ecommerce-app-vert-six.vercel.app/",
+  "http://localhost:3000"
+];
+
 app.use(cors({
-  origin: "https://ecommerce-app-vert-six.vercel.app/" || "http://localhost:3000",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
@@ -31,8 +42,8 @@ app.use(helmet({
 app.use(cookieParser());
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 100 
 });
 app.use(limiter);
 
