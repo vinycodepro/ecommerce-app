@@ -20,7 +20,7 @@ const app = express();
 
 // Security middleware
 const allowedOrigins = [
-  "https://ecommerce-app-vert-six.vercel.app/",
+  "https://ecommerce-app-vert-six.vercel.app",
   "http://localhost:3000"
 ];
 
