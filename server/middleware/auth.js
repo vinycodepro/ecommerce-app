@@ -5,9 +5,9 @@ import User from '../models/User.js';
 const auth = async (req, res, next) => {
   try {
     const token = req.cookies?.token || req.header('Authorization')?.replace('Bearer ', '');
-    
+    console.log("Cookies:", req.cookies);
     if (!token) {
-      console.log('checking for token, found none');
+      
       return res.status(401).json({ message: 'No token, authorization denied' });
     }
     
@@ -16,7 +16,7 @@ const auth = async (req, res, next) => {
     const user = await User.findById(idToFind).select('-password');
     
     if (!user) {
-     console.log('user not found in db for token:', idToFind);
+     
       return res.status(401).json({ message: 'Token is not valid' });
     }
 

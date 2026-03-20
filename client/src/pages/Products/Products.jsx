@@ -15,9 +15,9 @@ function Products() {
   const { cart, addToCart } = useContext(CartContext);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/products")
+    axios.get("https://ecommerce-app-1-pxaw.onrender.com/api/products")
       .then(res => {
-        console.log(res.data);
+      
         setProducts(res.data.products);
       })
       .catch(err => console.error(err));

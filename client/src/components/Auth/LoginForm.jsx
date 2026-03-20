@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { EyeIcon, EyeSlashIcon, EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const LoginForm = () => {
     clearError();
 
     // Check for remembered email
-    const rememberedEmail = localStorage.getItem('rememberedEmail');
+    const rememberedEmail = Cookies.get('rememberedEmail');
     if (rememberedEmail) {
       setFormData(prev => ({ ...prev, email: rememberedEmail }));
       setRememberMe(true);
@@ -67,9 +68,9 @@ const LoginForm = () => {
       if (result.success) {
         // Handle remember me
         if (rememberMe) {
-          localStorage.setItem('rememberedEmail', formData.email);
+          Cookies.set('rememberedEmail', formData.email, { expires: 30 });
         } else {
-          localStorage.removeItem('rememberedEmail');
+          Cookies.remove('rememberedEmail');
         }
 
         toast.success('Welcome back!');
@@ -90,18 +91,6 @@ const LoginForm = () => {
     return emailRegex.test(email);
   };
 
-  const handleDemoLogin = (role) => {
-    const demoAccounts = {
-      user: { email: 'user@example.com', password: 'user123' },
-      admin: { email: 'admin@example.com', password: 'admin123' },
-      vendor: { email: 'vendor@example.com', password: 'vendor123' }
-    };
-
-    const account = demoAccounts[role];
-    setFormData(account);
-    toast.success(`Demo ${role} credentials loaded. Click Login to continue.`);
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -109,7 +98,7 @@ const LoginForm = () => {
         <div className="text-center">
           <Link to="/" className="inline-flex items-center">
             <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">EC</span>
+              <span className="text-white font-bold text-lg">Vincyweb</span>
             </div>
           </Link>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
@@ -124,34 +113,6 @@ const LoginForm = () => {
               create a new account
             </Link>
           </p>
-        </div>
-
-        {/* Demo Accounts */}
-        <div className="bg-blue-50 rounded-lg p-4">
-          <h3 className="text-sm font-medium text-blue-800 mb-2">Demo Accounts</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <button
-              type="button"
-              onClick={() => handleDemoLogin('user')}
-              className="text-xs bg-white text-blue-600 px-3 py-2 rounded border border-blue-200 hover:bg-blue-50 transition-colors duration-200"
-            >
-              User
-            </button>
-            <button
-              type="button"
-              onClick={() => handleDemoLogin('admin')}
-              className="text-xs bg-white text-blue-600 px-3 py-2 rounded border border-blue-200 hover:bg-blue-50 transition-colors duration-200"
-            >
-              Admin
-            </button>
-            <button
-              type="button"
-              onClick={() => handleDemoLogin('vendor')}
-              className="text-xs bg-white text-blue-600 px-3 py-2 rounded border border-blue-200 hover:bg-blue-50 transition-colors duration-200"
-            >
-              Vendor
-            </button>
-          </div>
         </div>
 
         {/* Login Form */}
