@@ -19,22 +19,7 @@ connectDB();
 const app = express();
 
 // Security middleware
-const allowedOrigins = [
-  "https://ecommerce-app-vert-six.vercel.app",
-  "http://localhost:3000"
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin"}
