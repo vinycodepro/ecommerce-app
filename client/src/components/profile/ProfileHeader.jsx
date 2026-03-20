@@ -5,7 +5,7 @@ const ProfileHeader = ({ user }) => {
   return (
     <div className="profile-header flex items-center space-x-4 mb-6">
       <img
-        src={user.profilePic || "/default-avatar.png"}
+        src={user.profilePic || "/vincylogo.png"}
         alt="Profile"
         className="w-24 h-24 rounded-full object-cover"
       />

@@ -16,7 +16,7 @@ function AddProduct() {
   };
 
   const submitProduct = async () => {
-    await axios.post("http://localhost:5000/api/products", product);
+    await axios.post("https://ecommerce-app-1-pxaw.onrender.com/api/products", product);
     alert("Product added!");
   };
 
