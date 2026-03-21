@@ -7,7 +7,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/api/auth/me", {
+    fetch("https://ecommerce-app-1-pxaw.onrender.com/api/auth/me", {
       method: "GET",
       credentials: "include"
     })
