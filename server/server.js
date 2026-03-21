@@ -18,26 +18,39 @@ connectDB();
 
 const app = express();
 
-// Security middleware
-app.use(cors());
+const allowedOrigins = [
+  "https://ecommerce-app-vert-six.vercel.app",
+  "http://localhost:3000"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, origin);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin"}
 }));
 
 app.use(cookieParser());
-// Rate limiting
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100 
 });
 app.use(limiter);
 
-// Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/products.js';
 import cartRoutes from './routes/cart.js';
