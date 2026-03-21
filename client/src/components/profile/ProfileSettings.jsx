@@ -18,7 +18,8 @@ const ProfileSettings = ({ user }) => {
     // call your API to update user info
     try 
     {
-      const response = await fetch("/auth/me", {
+      const response = await fetch("https://ecommerce-app-1-pxaw.onrender.com/api/auth/me", {
+        credentials: "include",
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +35,7 @@ const ProfileSettings = ({ user }) => {
       console.error("Error updating profile:", error);
       alert("An error occurred while updating your profile. Please try again.");
     }
-    console.log("Updating user info", { name, email });
+
   };
 
   return (
