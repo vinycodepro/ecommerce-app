@@ -32,7 +32,7 @@ const categories = [
 export default function CategorySection() {
   return (
     <section className="py-16 bg-gray-50">
-      {/* 1. STATIC HEADER: This only renders once */}
+
       <div className="max-w-7xl mx-auto px-4 text-center mb-12">
         <h2 className="text-3xl font-bold">Shop by Category</h2>
         <p className="text-gray-600 mt-2">Explore our curated collections</p>
@@ -43,7 +43,7 @@ export default function CategorySection() {
           
           
           {categories.map((cat) => {
-            // Logic for background
+            
             const backgroundStyle = cat.isGradient 
               ? cat.bgImage 
               : `url(${cat.bgImage})`;
@@ -62,7 +62,6 @@ export default function CategorySection() {
                 
                 <div className="absolute inset-0 bg-black/30"></div>
 
-                
                 <div className="relative z-10">
                   <h3 className="text-3xl font-extrabold text-white drop-shadow-md">{cat.title}</h3>
                   <p className="opacity-90">{cat.description}</p>

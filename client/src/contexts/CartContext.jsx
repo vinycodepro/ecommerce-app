@@ -3,7 +3,6 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 import { cartService } from '../services/cartService';
 import toast from 'react-hot-toast';
-import Cookies from 'js-cookie';
 
 const CartContext = createContext();
 
@@ -41,21 +40,20 @@ export const CartProvider = ({ children }) => {
   };
 
   const loadLocalCart = () => {
-  try{
-    const savedCart = Cookies.get('cart');
-    if (savedCart) {
-      setCart(JSON.parse(savedCart));
+    try {
+      const localCart = localStorage.getItem('cart');
+      if (localCart) {
+        setCart(JSON.parse(localCart));
     }
-  }catch(error){
+    } catch (error) {
     console.error('Error loading local cart:', error);
-    toast.error('Failed to load local cart');
   } finally {
     setLoading(false);
   }
   };
 
-  const saveCartToCookies = (cartItems) => {
-    Cookies.set('cart', JSON.stringify(cartItems), { expires: 7 }); // Set cookie to expire in 7 days
+  const saveLocalCart = (cartItems) => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
   };
 
   const updateCartItem = async (productId, quantity, attributes = {}) => {
@@ -64,7 +62,7 @@ export const CartProvider = ({ children }) => {
       
       if (isAuthenticated) {
         const response = await cartService.updateCart([{ product: productId, quantity, attributes }]);
-        updatedCart = response.cart;
+        updatedCart = response.data?.items || [];
       } else {
         updatedCart = cart.map(item =>
           item.product._id === productId && JSON.stringify(item.attributes) === JSON.stringify(attributes)
@@ -92,7 +90,7 @@ export const CartProvider = ({ children }) => {
           !(item.product._id === productId && JSON.stringify(item.attributes) === JSON.stringify(attributes))
         );
         const response = await cartService.updateCart(newCart);
-        updatedCart = response.cart;
+        updatedCart = response.data?.items || [];
       } else {
         updatedCart = cart.filter(item =>
           !(item.product._id === productId && JSON.stringify(item.attributes) === JSON.stringify(attributes))

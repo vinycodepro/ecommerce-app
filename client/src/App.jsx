@@ -9,7 +9,7 @@ import Footer from './components/Layout/Footer';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 //import ProductDetail from './pages/Products/ProductDetail';
-import Cart from './pages/Cart/Cart';
+import Cart from './components/Cart/Cart';
 //import Checkout from './pages/Checkout/Checkout';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
@@ -52,12 +52,9 @@ function App() {
                   <Route path="/profile" element={<Profile />} />
                 </Route>
 
-                {/* Protected User Routes 
-              <Route path="/cart" element={
-                  <ProtectedRoute>
-                    <Cart />
-                  </ProtectedRoute>
-                } />
+                <Route path="/cart" element={<Cart />} />
+
+                {/*
               {/*<Route path="/checkout" element={
                   <ProtectedRoute>
                     <Checkout />

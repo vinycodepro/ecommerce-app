@@ -6,11 +6,12 @@ import { mainLinks } from "@/config/navigation";
 import NavItem from "./Navbar/NavItem";
 import UserMenu from "./UserMenu";
 import Searchbar from "../UI/Searchbar";
+import { ShoppingCart }from "lucide-react";
 import {
-  ShoppingCartIcon,
   Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function Navbar() {
           ))}
 
   <Link to="/cart" className="relative group">
-  <ShoppingCartIcon
+  <ShoppingCart
     className="
       h-7 w-7
       text-white

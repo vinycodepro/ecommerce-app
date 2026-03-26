@@ -15,6 +15,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 
 const CartItem = ({ item }) => {
+
   const [isUpdating, setIsUpdating] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
   const { updateCartItem, removeFromCart, moveToWishlist } = useCart();
@@ -27,7 +28,7 @@ const CartItem = ({ item }) => {
       toast.error(`Only ${item.product.inventory.stock} items available in stock`);
       return;
     }
-
+   
     setIsUpdating(true);
     try {
       await updateCartItem(item.product._id, newQuantity, item.attributes);
@@ -182,7 +183,7 @@ const CartItem = ({ item }) => {
                   className="text-gray-400 hover:text-red-500 transition-colors duration-200 p-1 rounded"
                   title="Move to wishlist"
                 >
-                  <HeartIcon className="h-5 w-5" />
+                  <HeartSolidIcon className="h-5 w-5" />
                 </button>
               )}
             </div>

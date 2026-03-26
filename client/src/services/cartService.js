@@ -3,11 +3,11 @@ export const cartService = {
   // Add item to cart
   async addItemToCart(itemData) {
     const response = await api.post('/cart/items', itemData);
-    return response.data;
+    return response.data.items;
   },
     // Get cart items
     async getCart() {  
     const response = await api.get('/cart/items');
-    return response.data;
+    return response.data.items;
     }
 };
