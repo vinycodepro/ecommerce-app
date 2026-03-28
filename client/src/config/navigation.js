@@ -1,5 +1,7 @@
 export const mainLinks = [
   { name: "Products", path: "/products" },
+  { name: "Cart", path: "/cart" },
+
 ];
 
 export const userLinks = [
