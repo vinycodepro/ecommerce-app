@@ -1,13 +1,25 @@
 import api from './api';
 export const cartService = {
-  // Add item to cart
-  async addItemToCart(itemData) {
-    const response = await api.post('/cart/items', itemData);
-    return response.data.items;
-  },
-    // Get cart items
-    async getCart() {  
+  
+async addItemToCart(productId, quantity) {
+  const itemData = {
+    productId,
+    quantity
+  };
+
+  console.log("Sending to backend:", itemData);
+
+  const response = await api.post('/cart/items', itemData);
+  return response.data.items;
+},
+    
+  async getCart() {  
     const response = await api.get('/cart/items');
+    return response.data.items;
+    },
+
+  async updateCart(productId, quantity, attributes) {
+    const response = await api.put(`/cart/items/${productId}`, { quantity, attributes });
     return response.data.items;
     }
 };

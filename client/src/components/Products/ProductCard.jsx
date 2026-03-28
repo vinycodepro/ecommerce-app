@@ -1,6 +1,8 @@
 import React from 'react';
+import { useCart } from '../../contexts/CartContext';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, }) => {
+  const { addItemToCart } = useCart();
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
       
@@ -30,7 +32,9 @@ const ProductCard = ({ product }) => {
         <p className="text-blue-500 font-semibold text-md">${product.price}</p>
         <p className="text-gray-600 text-sm mt-1">{product.description}</p>
 
-        <button className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors">
+        <button
+        onClick={() => addItemToCart(product._id, 1)} 
+        className="mt-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition-colors">
           Add to Cart
         </button>
       </div>

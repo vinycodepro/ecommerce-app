@@ -10,7 +10,7 @@ export default function UserMenu({ user, logout }) {
         {user?.name}
       </button>
 
-      <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
+      <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
         {userLinks.map((item) => (
           <Link key={item.path} to={item.path} className="block px-4 py-2 hover:bg-gray-100">
             {item.name}

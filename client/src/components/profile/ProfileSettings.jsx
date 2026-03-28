@@ -15,10 +15,10 @@ const ProfileSettings = ({ user }) => {
 
   const handleUpdate = async e => {
     e.preventDefault();
-    // call your API to update user info
+  
     try 
     {
-      const response = await fetch("https://ecommerce-app-1-pxaw.onrender.com/api/auth/me", {
+      const response = await fetch("https://ecommerce-app-1-pxaw.onrender.com/api/profile", {
         credentials: "include",
         method: "PUT",
         headers: {

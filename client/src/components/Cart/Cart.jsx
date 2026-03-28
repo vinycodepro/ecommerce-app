@@ -1,4 +1,3 @@
-// path to use
 import React from 'react';
 import CartSummary from '../../components/Cart/CartSummary';
 import CartItem from '../../components/Cart/CartItem';

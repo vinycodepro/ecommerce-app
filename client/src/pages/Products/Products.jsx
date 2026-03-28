@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { useCart } from "../../contexts/CartContext";
 import ProductCard from "../../components/Products/ProductCard"; 
 
 
@@ -11,8 +10,7 @@ import ProductCard from "../../components/Products/ProductCard";
 function Products() {
   const [products, setProducts] = useState([]);
   const { user } = useAuth();
-  const { updateCartItem } = useContext(CartContext);
-  const { cart, addToCart } = useContext(CartContext);
+  const { cart, addToCart, updateCartItem } = useCart();
 
   useEffect(() => {
     axios.get("https://ecommerce-app-1-pxaw.onrender.com/api/products")

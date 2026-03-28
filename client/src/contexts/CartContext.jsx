@@ -27,7 +27,7 @@ export const CartProvider = ({ children }) => {
     }
   }, [isAuthenticated]);
 
-  const fetchCart = async () => {
+    const fetchCart = async () => {
     try {
       const cartData = await cartService.getCart();
       setCart(cartData || []);
@@ -39,6 +39,45 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const addItemToCart = async (productId, quantity = 1, attributes = {}) => {
+  try {
+    let updatedCart;
+
+    if (isAuthenticated) {
+      const response = await cartService.addItemToCart(productId, quantity = 1);
+      updatedCart = response.data?.items || [];
+    } else {
+      const existingItem = cart.find(
+        item =>
+          item.product._id === productId &&
+          JSON.stringify(item.attributes) === JSON.stringify(attributes)
+      );
+
+      if (existingItem) {
+        updatedCart = cart.map(item =>
+          item.product._id === productId
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      } else {
+        updatedCart = [
+          ...cart,
+          { product: { _id: productId }, quantity, attributes }
+        ];
+      }
+
+      saveLocalCart(updatedCart);
+    }
+
+    setCart(updatedCart);
+    return updatedCart;
+  } catch (error) {
+    console.error("Error adding to cart:", error);
+    throw error;
+  }
+};
+
+  
   const loadLocalCart = () => {
     try {
       const localCart = localStorage.getItem('cart');
@@ -56,12 +95,12 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   };
 
-  const updateCartItem = async (productId, quantity, attributes = {}) => {
+  const updateCart = async (productId, quantity, attributes = {}) => {
     try {
       let updatedCart;
       
       if (isAuthenticated) {
-        const response = await cartService.updateCart([{ product: productId, quantity, attributes }]);
+        const response = await cartService.updateCart(productId, quantity, attributes);
         updatedCart = response.data?.items || [];
       } else {
         updatedCart = cart.map(item =>
@@ -156,9 +195,10 @@ export const CartProvider = ({ children }) => {
   };
 
   const value = {
+    addItemToCart,
     cart,
     loading,
-    updateCartItem,
+    updateCart,
     removeFromCart,
     moveToWishlist,
     getCartItemCount,
