@@ -5,8 +5,6 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 import ProductCard from "../../components/Products/ProductCard"; 
 
-
-
 function Products() {
   const [products, setProducts] = useState([]);
   const { user } = useAuth();

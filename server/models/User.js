@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-  // Add these fields to your server/models/User.js:
 
 phone: {
   type: String,

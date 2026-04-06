@@ -1,5 +1,0 @@
-### Get Current User Without Token (Should Fail)
-GET http://localhost:5000/api/profile
-credentials: include
-
-Accept: application/json

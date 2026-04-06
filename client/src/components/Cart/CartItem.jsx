@@ -18,7 +18,7 @@ const CartItem = ({ item }) => {
 
   const [isUpdating, setIsUpdating] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
-  const { updateCartItem, removeFromCart, moveToWishlist } = useCart();
+  const { updateCart, removeFromCart, moveToWishlist } = useCart();
   const { isAuthenticated } = useAuth();
 
   const handleQuantityChange = async (newQuantity) => {
@@ -31,7 +31,7 @@ const CartItem = ({ item }) => {
    
     setIsUpdating(true);
     try {
-      await updateCartItem(item.product._id, newQuantity, item.attributes);
+      await updateCart(item.product._id, newQuantity, item.attributes);
       toast.success('Cart updated');
     } catch (error) {
       console.error('Error updating cart item:', error);
