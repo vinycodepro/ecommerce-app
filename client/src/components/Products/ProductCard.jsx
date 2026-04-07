@@ -3,6 +3,7 @@ import { useCart } from '../../contexts/CartContext';
 import toast from 'react-hot-toast';
 
 const ProductCard = ({ product, }) => {
+  
   const { addItemToCart } = useCart();
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
@@ -10,7 +11,7 @@ const ProductCard = ({ product, }) => {
       {/* Product image */}
       <div className="relative">
         <img
-          src={product.image}
+          src={product.images[0].url}
           alt={product.name}
           className="w-full h-48 object-cover"
         />

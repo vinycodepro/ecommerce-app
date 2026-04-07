@@ -36,7 +36,7 @@ export const registerUser = async (req, res) => {
       });
     }
   } catch (error) {
-    // This catch block prevents the 500 error from crashing your whole app
+    
     res.status(500).json({ message: 'Server Error', error: error.message });
   }
 };
