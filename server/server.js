@@ -51,18 +51,14 @@ app.use(express.urlencoded({ extended: true }));
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/products.js';
 import cartRoutes from './routes/cart.js';
-import orderRoutes from './routes/orders.js';
 import userRoutes from './routes/users.js';
-import paymentRoutes from './routes/payments.js';
-import reviewRoutes from './routes/reviews.js';
+import profileRoutes from './routes/profile.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
-app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/payments', paymentRoutes);
-app.use('/api/reviews', reviewRoutes);
+app.use('/api/profile', profileRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import auth from '../middleware/auth.js';
 
-
 const router = express.Router();
 
 // Generate JWT Token
@@ -36,15 +35,13 @@ router.post('/register', [
       });
     }
 
-    const { name, email, password } = req.body;
+  const { name, email, password } = req.body;
 
-    // Check if user exists
-    const existingUser = await User.findOne({ email });
+   const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists with this email' });
     }
 
-    // Create user
     const user = new User({ 
       name: name.trim(),
       email: email.toLowerCase(),
@@ -53,7 +50,6 @@ router.post('/register', [
 
     await user.save();
 
-    // Generate token
     const token = generateToken(user._id);
     res.cookie('token', token, {
       httpOnly: true,
@@ -142,7 +138,6 @@ router.post('/login', [
   }
 });
 
-// @route   POST /api/auth/logout
 router.post('/logout', (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
@@ -152,7 +147,6 @@ router.post('/logout', (req, res) => {
   res.json({ message: 'Logged out successfully' });
 });
 
-// GET /api/auth/me 
 router.get('/me', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
@@ -170,49 +164,6 @@ router.get('/me', auth, async (req, res) => {
     });
   } catch (error) {
     console.error('Get user error:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
-
-//  PUT /api/auth/profile
-router.put('/profile', auth, [
-  body('name')
-    .optional()
-    .trim()
-    .isLength({ min: 2 })
-    .withMessage('Name must be at least 2 characters')
-    .escape()
-], async (req, res) => {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { name, avatar } = req.body;
-    // Find user and update profile
-    const user = await User.findById(req.user.id);
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    if (name) user.name = name.trim();
-    if (avatar) user.avatar = avatar;
-
-    await user.save();
-
-    res.json({
-      message: 'Profile updated successfully',
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        avatar: user.avatar
-      }
-    });
-  } catch (error) {
-    console.error('Profile update error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

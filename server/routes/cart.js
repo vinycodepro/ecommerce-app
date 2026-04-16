@@ -26,7 +26,7 @@ router.post('/items', auth, async (req, res) => {
     const itemIndex = cart.items.findIndex(item => item.product.toString() === productId);
 
     if (itemIndex > -1) {
-      cart.items[itemIndex].quantity += quantity; // increase quantity
+      cart.items[itemIndex].quantity += quantity;
     } else {
       cart.items.push({ product: productId, quantity });
     }
