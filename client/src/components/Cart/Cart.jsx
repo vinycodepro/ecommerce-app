@@ -5,7 +5,7 @@ import { useCart } from '../../contexts/CartContext';
 import Loading from '../../pages/Shared/Loading';
 
 const Cart = () => {
-  const { cart, loading } = useCart();
+const { cart, loading } = useCart();
 
   if (loading) {
     return <Loading />;

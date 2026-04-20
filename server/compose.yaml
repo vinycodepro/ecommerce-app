@@ -1,0 +1,12 @@
+services:
+  ecommerceserver:
+    image: ecommerceserver
+    build:
+      context: ecommerce-app/server
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+      - 5000:5000
+      - 8000:8000

@@ -21,7 +21,7 @@ const CartItem = ({ item }) => {
   const { updateCart, removeFromCart, moveToWishlist } = useCart();
   const { isAuthenticated } = useAuth();
 
-  const handleQuantityChange = async (newQuantity) => {
+const handleQuantityChange = async (newQuantity) => {
     if (newQuantity < 1 || newQuantity > 100) return;
     
     if (newQuantity > item.product.inventory.stock) {
