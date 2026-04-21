@@ -6,6 +6,13 @@ import toast from 'react-hot-toast';
 
 const CartContext = createContext();
 
+const normalizeCartItems = (payload) => {
+  if (Array.isArray(payload)) return payload;
+  if (Array.isArray(payload?.items)) return payload.items;
+  if (Array.isArray(payload?.data?.items)) return payload.data.items;
+  return [];
+};
+
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
@@ -39,13 +46,13 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const addItemToCart = async (productId, quantity = 1, attributes = {}) => {
+  const addItemToCart = async (productId, quantity = 1, attributes = {}, productData = null) => {
   try {
     let updatedCart;
 
     if (isAuthenticated) {
-      const response = await cartService.addItemToCart(productId, quantity = 1);
-      updatedCart = response.data?.items || [];
+      const response = await cartService.addItemToCart(productId, quantity);
+      updatedCart = normalizeCartItems(response);
     } else {
       const existingItem = cart.find(
         item =>
@@ -55,14 +62,16 @@ export const CartProvider = ({ children }) => {
 
       if (existingItem) {
         updatedCart = cart.map(item =>
-          item.product._id === productId
+          item.product._id === productId &&
+          JSON.stringify(item.attributes) === JSON.stringify(attributes)
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
+        const fallbackProduct = productData || { _id: productId };
         updatedCart = [
           ...cart,
-          { product: { _id: productId }, quantity, attributes }
+          { product: fallbackProduct, quantity, attributes }
         ];
       }
 
@@ -101,7 +110,7 @@ export const CartProvider = ({ children }) => {
       
       if (isAuthenticated) {
         const response = await cartService.updateCart(productId, quantity, attributes);
-        updatedCart = response.data?.items || [];
+        updatedCart = normalizeCartItems(response);
       } else {
         updatedCart = cart.map(item =>
           item.product._id === productId && JSON.stringify(item.attributes) === JSON.stringify(attributes)
@@ -129,7 +138,7 @@ export const CartProvider = ({ children }) => {
           !(item.product._id === productId && JSON.stringify(item.attributes) === JSON.stringify(attributes))
         );
         const response = await cartService.updateCart(newCart);
-        updatedCart = response.data?.items || [];
+        updatedCart = normalizeCartItems(response);
       } else {
         updatedCart = cart.filter(item =>
           !(item.product._id === productId && JSON.stringify(item.attributes) === JSON.stringify(attributes))

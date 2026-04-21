@@ -36,7 +36,7 @@ const ProductCard = ({ product, }) => {
 
         <button
         onClick={() => {
-          addItemToCart(product._id, 1);
+          addItemToCart(product._id, 1, {}, product);
           toast.success(`Added ${product.name} to cart!`)
         } 
         } 
