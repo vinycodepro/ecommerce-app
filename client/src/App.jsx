@@ -17,18 +17,19 @@ import Profile from './pages/User/Profile';
 //import Orders from './pages/User/Orders';
 //import OrderDetails from './pages/User/OrderDetails';
 //import Wishlist from './pages/User/Wishlist';
-//import AdminDashboard from './pages/Admin/Dashboard';
+import AdminDashboard from './pages/Admin/Dashboard';
 //import AdminProducts from './pages/Admin/Products/AdminProducts';
 import AddProduct from './pages/Admin/Products/AddProduct';
 //import EditProduct from './pages/Admin/Products/EditProduct';
 //import AdminOrders from './pages/Admin/Orders/AdminOrders';
-//import AdminUsers from './pages/Admin/Users/AdminUsers';
-//import Analytics from './pages/Admin/Analytics/Analytics';
+import AdminUsers from './pages/Admin/Users/AdminUsers';
+import Analytics from './pages/Admin/Analytics/Analytics';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AdminRoute from './components/Auth/AdminRoute';
 import Loading from './pages/Shared/Loading';
 //import Error from './pages/Shared/Error';
 //import NotFound from './pages/Shared/NotFound';
+//'/src/pages/Admin/Orders/AdminOrders.jsx
 
 function App() {
   return (
@@ -52,7 +53,13 @@ function App() {
                   <Route path="/profile" element={<Profile />} />
                 </Route>
 
+
                 <Route path="/cart" element={<Cart />} />
+
+               <Route path="/admin" element={<AdminRoute>
+                <AdminDashboard /> 
+                </AdminRoute>
+                } />
 
                 {/*
               {/*<Route path="/checkout" element={
@@ -81,31 +88,15 @@ function App() {
                  */}
 
                 {/* Admin Routes */}
-                {/*<Route path="/admin" element={
-                  <AdminRoute>
-                    <AdminDashboard />
-                  </AdminRoute>
-                } />
-                <Route path="/admin/products" element={
-                  <AdminRoute>
-                    <AdminProducts />
-                  </AdminRoute>
-                } />
+
+
                 <Route path="/admin/products/add" element={
                   <AdminRoute>
                     <AddProduct />
                   </AdminRoute>
                 } />
-                <Route path="/admin/products/edit/:id" element={
-                  <AdminRoute>
-                    <EditProduct />
-                  </AdminRoute>
-                } />
-                <Route path="/admin/orders" element={
-                  <AdminRoute>
-                    <AdminOrders />
-                  </AdminRoute>
-                } />
+
+
                 <Route path="/admin/users" element={
                   <AdminRoute>
                     <AdminUsers />
@@ -115,11 +106,30 @@ function App() {
                   <AdminRoute>
                     <Analytics />
                   </AdminRoute>
-                } />*/}
+                } />
 
                 
                 {/* 404 Route */}
-                {/* <Route path="*" element={<NotFound />} /> */}
+                {/* <Route path="*" element={<NotFound />} /> 
+
+               <Route path="/admin/products/edit/:id" element={
+                  <AdminRoute>
+                    <EditProduct />
+                  </AdminRoute>
+                } />
+                
+                 <Route path="/admin/orders" element={
+                  <AdminRoute>
+                    <AdminOrders />
+                  </AdminRoute>
+                } />
+
+                                <Route path="/admin/products" element={
+                  <AdminRoute>
+                    <AdminProducts />
+                  </AdminRoute>
+                } />
+                */}
                   
 
               </Routes>

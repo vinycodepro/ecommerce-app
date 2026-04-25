@@ -7,8 +7,6 @@ async addItemToCart(productId, quantity) {
     quantity
   };
 
-  console.log("Sending to backend:", itemData);
-
   const response = await api.post('/cart/items', itemData);
   return response.data.items;
 },

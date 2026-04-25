@@ -37,10 +37,10 @@ export const adminService = {
     const response = await api.get('/analytics/products', { params });
     return response.data;
   },
-
+//?/limit=5
   // Get recent orders
   async getRecentOrders() {
-    const response = await api.get('/admin/orders?limit=5');
+    const response = await api.get('/admin/orders');
     return response.data;
   },
 

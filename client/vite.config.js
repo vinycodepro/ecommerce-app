@@ -7,8 +7,12 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: [
       {find: '@', replacement: path.resolve(__dirname, 'src')},
+      {find: '@components', replacement: path.resolve(__dirname, 'src/components')},
+      {find: '@services', replacement: path.resolve(__dirname, 'src/services')},
+      {find: '@shared', replacement: path.resolve(__dirname, 'src/pages/Shared')},
     ],
   },
   server: {

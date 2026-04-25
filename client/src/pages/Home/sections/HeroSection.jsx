@@ -13,7 +13,7 @@ export default function HeroSection() {
 
     <div className="relative z-10 max-w-3xl px-4">
        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Welcome to VincyWeb
+          Welcome to VincyShop
         </h1>
         <p className="text-xl md:text-2xl mb-8 opacity-90">
           Discover amazing products at great prices

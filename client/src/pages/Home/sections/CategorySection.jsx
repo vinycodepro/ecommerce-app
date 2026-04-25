@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import fashionImage from "../../../../src/assets/fashion.jpg";
 import gadgetsImage from "../../../../src/assets/earpods.jpg";
 import toolsImage from "../../../../src/assets/engineering.png";
+import homeLivingImage from "../../../../src/assets/home-living.jpg";
+import accessoriesImage from "../../../../src/assets/accessories.jpg";  
+import beautyImage from "../../../../src/assets/beauty.jpg";
+import kidsToysImage from "../../../../src/assets/kids-toys.jpg";
 
 
 const categories = [
@@ -14,7 +18,28 @@ const categories = [
     
   },
   {
-    title: "Gadgets",
+    title: "Beauty & Personal Care",
+    description: "Top beauty products",
+    link: "/products?category=beauty",
+    bgImage: beautyImage,
+    isGradient: false
+  },
+  {
+    title: "Home & Living",
+    description: "Essentials for your home",
+    link: "/products?category=home-living",
+    bgImage: homeLivingImage,
+    isGradient: false
+  },
+  {
+    title: "Accessories",
+    description: "Stylish accessories for every occasion",
+    link: "/products?category=accessories",
+    bgImage: accessoriesImage,
+    isGradient: false
+  },
+  {
+    title: "Electronics & Gadgets",
     description: "Latest tech gadgets",
     link: "/products?category=gadgets",
     bgImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url('${gadgetsImage}')`,
@@ -25,6 +50,13 @@ const categories = [
     description: "Professional civil tools",
     link: "/products?category=civil-engineering-tools",
     bgImage: toolsImage,
+    isGradient: false
+  },
+  {
+    title: "kids & Toys",
+    description: "Fun and educational toys for kids",
+    link: "/products?category=kids-toys",
+    bgImage: kidsToysImage,
     isGradient: false
   }
 ];

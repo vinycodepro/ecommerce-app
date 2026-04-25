@@ -18,7 +18,7 @@ const ProfileSettings = ({ user }) => {
   
     try 
     {
-      const response = await fetch("https://ecommerce-app-1-pxaw.onrender.com/api/profile", {
+      const response = await fetch("https://ecommerce-app-1-pxaw.onrender.com/api/users/profile", {
         credentials: "include",
         method: "PUT",
         headers: {

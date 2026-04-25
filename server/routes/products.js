@@ -105,8 +105,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// @route   POST /api/products
-// @desc    Create a product
 // @access  Private/Admin
 router.post('/', auth, admin, async (req, res) => {
   try {
