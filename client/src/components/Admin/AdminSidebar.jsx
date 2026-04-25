@@ -2,15 +2,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  ChartBarIcon,
-  ShoppingBagIcon,
-  UsersIcon,
-  TicketIcon,
-  CogIcon,
-  HomeIcon,
-  ArrowLeftIcon,
-  DocumentTextIcon,
-} from '@heroicons/react/24/outline';
+  ArrowLeft as ArrowLeftIcon,
+  BarChart3 as ChartBarIcon,
+  FileText as DocumentTextIcon,
+  Home as HomeIcon,
+  Settings as CogIcon,
+  ShoppingBag as ShoppingBagIcon,
+  Ticket as TicketIcon,
+  Users as UsersIcon,
+} from 'lucide-react';
 
 const AdminSidebar = ({ isOpen, onClose }) => {
   const location = useLocation();

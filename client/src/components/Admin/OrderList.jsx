@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  EyeIcon,
-  PencilIcon,
-  TruckIcon,
-  CheckCircleIcon,
-  XCircleIcon,
-  ClockIcon,
-  ChevronUpDownIcon,
-  MagnifyingGlassIcon,
-  FunnelIcon,
-} from '@heroicons/react/24/outline';
+  ArrowUpDown as ChevronUpDownIcon,
+  CircleCheck as CheckCircleIcon,
+  Clock as ClockIcon,
+  Eye as EyeIcon,
+  Filter as FunnelIcon,
+  Pencil as PencilIcon,
+  Search as MagnifyingGlassIcon,
+  Truck as TruckIcon,
+  XCircle as XCircleIcon,
+} from 'lucide-react';
 import { adminService } from '../../services/adminService';
 import toast from 'react-hot-toast';
 

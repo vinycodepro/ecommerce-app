@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { UserIcon } from "@heroicons/react/24/outline";
+import { User as UserIcon } from "lucide-react";
 import { userLinks, adminLinks } from "../../config/navigation";
 
 export default function UserMenu({ user, logout }) {

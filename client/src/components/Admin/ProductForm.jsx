@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  PhotoIcon,
-  XMarkIcon,
-  PlusIcon,
-  TrashIcon,
-} from '@heroicons/react/24/outline';
+  Image as PhotoIcon,
+  Plus as PlusIcon,
+  Trash2 as TrashIcon,
+  X as XMarkIcon,
+} from 'lucide-react';
 import { productService } from '../../services/productService';
 import { uploadService } from '../../services/uploadService';
 import toast from 'react-hot-toast';

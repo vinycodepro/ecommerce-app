@@ -1,20 +1,20 @@
 // client/src/components/Admin/UserList.jsx
 import React, { useState } from 'react';
 import {
-  EyeIcon,
-  PencilIcon,
-  TrashIcon,
-  UserIcon,
-  ShieldCheckIcon,
-  CheckIcon,
-  ChevronUpDownIcon,
-  MagnifyingGlassIcon,
-  FunnelIcon,
-  EnvelopeIcon,
-  PhoneIcon,
-  CalendarIcon,
-} from '@heroicons/react/24/outline';
-import { Ban } from 'lucide-react';
+  ArrowUpDown as ChevronUpDownIcon,
+  Ban,
+  Calendar as CalendarIcon,
+  Check as CheckIcon,
+  Eye as EyeIcon,
+  Filter as FunnelIcon,
+  Lock as ShieldCheckIcon,
+  Mail as EnvelopeIcon,
+  Pencil as PencilIcon,
+  Phone as PhoneIcon,
+  Search as MagnifyingGlassIcon,
+  Trash2 as TrashIcon,
+  User as UserIcon,
+} from 'lucide-react';
 import { adminService } from '../../services/adminService';
 import toast from 'react-hot-toast';
 

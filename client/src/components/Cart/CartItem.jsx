@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  TrashIcon,
-  PlusIcon,
-  MinusIcon,
-  HeartIcon,
-} from '@heroicons/react/24/outline';
+  Heart as HeartIcon,
+  Minus as MinusIcon,
+  Plus as PlusIcon,
+  Trash2 as TrashIcon,
+} from 'lucide-react';
 import {
   HeartIcon as HeartSolidIcon,
 } from '@heroicons/react/24/solid';
@@ -91,7 +91,7 @@ const handleQuantityChange = async (newQuantity) => {
     <div className={`bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-all duration-200 ${
       isRemoving ? 'opacity-50' : ''
     }`}>
-      <div className="flex items-start space-x-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:space-x-4 sm:gap-0">
         {/* Product Image */}
         <div className="flex-shrink-0">
           <Link to={`/products/${item.product._id}`}>
@@ -105,7 +105,7 @@ const handleQuantityChange = async (newQuantity) => {
 
         {/* Product Details */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex-1">
               <Link 
                 to={`/products/${item.product._id}`}
@@ -190,9 +190,9 @@ const handleQuantityChange = async (newQuantity) => {
           </div>
 
           {/* Price and Quantity Controls */}
-          <div className="flex items-center justify-between mt-4">
+          <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Quantity Controls */}
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-wrap items-center gap-3">
               <span className="text-sm font-medium text-gray-700">Qty:</span>
               
               <div className="flex items-center border border-gray-300 rounded-lg">
@@ -223,10 +223,10 @@ const handleQuantityChange = async (newQuantity) => {
             </div>
 
             {/* Pricing */}
-            <div className="text-right">
+            <div className="text-left sm:text-right">
               {/* Discount Price */}
               {item.product.comparePrice && item.product.comparePrice > item.product.price && (
-                <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-sm text-gray-500 line-through">
                     ${(item.product.comparePrice * item.quantity).toFixed(2)}
                   </span>

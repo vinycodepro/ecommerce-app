@@ -1,10 +1,5 @@
-@import "tailwindcss";
-
-
-@layer base {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-  
-}
+@import "tailwindcss";
 
 
 /* 1. Theme Configuration */
@@ -27,18 +22,15 @@ body {
   @apply bg-gray-50 text-gray-900;
 }
 
-h1, h2, h3, h4, h5, h6 {
+main h1, main h2, main h3, main h4, main h5, main h6 {
   font-weight: 600;
   color: #021733; 
 }
 
 svg {
-  width: 40px;
-  height: 40px;
-  max-width: 100%;
-  max-height: 100%;
   display: inline-block;
   vertical-align: middle;
+  flex-shrink: 0;
 }
 
 /* 3. Custom Utilities (Replacing @layer components) */

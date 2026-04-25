@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import OrderList from '../../../components/Admin/OrderList';
-import { Bars3Icon, PlusIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import { FileText as DocumentTextIcon, Menu as Bars3Icon, Plus as PlusIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
 import Loading from '../../Shared/Loading';
 import toast from 'react-hot-toast';
@@ -62,7 +62,7 @@ const AdminOrders = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <AdminSidebar 
         isOpen={sidebarOpen} 

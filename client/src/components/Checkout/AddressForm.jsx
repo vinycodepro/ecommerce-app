@@ -1,11 +1,11 @@
 // client/src/components/Checkout/AddressForm.jsx
 import React, { useState, useEffect } from 'react';
 import {
-  MapPinIcon,
-  HomeIcon,
-  BuildingOfficeIcon,
-  CheckCircleIcon,
-} from '@heroicons/react/24/outline';
+  Building2 as BuildingOfficeIcon,
+  CircleCheck as CheckCircleIcon,
+  Home as HomeIcon,
+  MapPin as MapPinIcon,
+} from 'lucide-react';
 
 const AddressForm = ({ 
   onAddressSubmit, 

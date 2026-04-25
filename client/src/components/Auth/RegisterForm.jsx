@@ -2,14 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
-  EyeIcon, 
-  EyeSlashIcon, 
-  EnvelopeIcon, 
-  LockClosedIcon, 
-  UserIcon,
-  CheckIcon,
-  XMarkIcon
-} from '@heroicons/react/24/outline';
+  Check as CheckIcon,
+  Eye as EyeIcon, 
+  EyeOff as EyeSlashIcon, 
+  Lock as LockClosedIcon, 
+  Mail as EnvelopeIcon, 
+  User as UserIcon,
+  X as XMarkIcon
+} from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -197,7 +197,7 @@ const RegisterForm = () => {
         <div className="text-center">
           <Link to="/" className="inline-flex items-center">
             <div className="w-22 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">vincyweb</span>
+              <span className="text-white font-bold text-lg">VincyShop</span>
             </div>
           </Link>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">

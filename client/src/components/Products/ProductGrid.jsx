@@ -1,8 +1,7 @@
 // client/src/components/Products/ProductGrid.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StarIcon, HeartIcon } from '@heroicons/react/24/solid';
-import { HeartIcon as HeartOutline } from '@heroicons/react/24/outline';
+import { Heart as HeartIcon, Star as StarIcon } from 'lucide-react';
 
 const ProductGrid = ({ products, onAddToWishlist }) => {
   return (
@@ -20,9 +19,9 @@ const ProductGrid = ({ products, onAddToWishlist }) => {
               className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md hover:bg-gray-50"
             >
               {product.isInWishlist ? (
-                <HeartIcon className="h-5 w-5 text-red-500" />
+                <HeartIcon className="h-5 w-5 fill-red-500 text-red-500" />
               ) : (
-                <HeartOutline className="h-5 w-5 text-gray-400" />
+                <HeartIcon className="h-5 w-5 text-gray-400" />
               )}
             </button>
           </div>
@@ -41,7 +40,7 @@ const ProductGrid = ({ products, onAddToWishlist }) => {
                     key={rating}
                     className={`h-4 w-4 ${
                       rating < product.rating.average
-                        ? 'text-yellow-400'
+                        ? 'fill-yellow-400 text-yellow-400'
                         : 'text-gray-300'
                     }`}
                   />

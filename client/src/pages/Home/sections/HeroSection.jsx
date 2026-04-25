@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function HeroSection() {
   return (
     <section
-      className="relative h-screen flex items-center justify-center text-center text-white"
+      className="relative flex min-h-[70vh] items-center justify-center px-4 py-20 text-center text-white sm:min-h-[78vh] sm:py-24"
       style={{
         backgroundImage: "url('/background.jpg')",
         backgroundSize: "cover",
@@ -11,16 +11,16 @@ export default function HeroSection() {
       }}
     >
 
-    <div className="relative z-10 max-w-3xl px-4">
-       <h1 className="text-4xl md:text-6xl font-bold mb-6">
+    <div className="relative z-10 max-w-3xl">
+       <h1 className="mb-6 text-4xl font-bold sm:text-5xl md:text-6xl">
           Welcome to VincyShop
         </h1>
-        <p className="text-xl md:text-2xl mb-8 opacity-90">
+        <p className="mb-8 text-lg opacity-90 sm:text-xl md:text-2xl">
           Discover amazing products at great prices
         </p>
         <Link
           to="/products"
-          className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-200"
+          className="inline-block rounded-lg bg-white px-6 py-3 text-base font-semibold text-blue-600 transition duration-200 hover:bg-gray-100 sm:px-8 sm:text-lg"
         >
           Shop Now
         </Link>

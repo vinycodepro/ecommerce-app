@@ -108,7 +108,7 @@ function ProductDetail() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
       <Link to="/products" className="text-sm font-medium text-blue-600 hover:text-blue-700">
-        ← Back to products
+        &larr; Back to products
       </Link>
 
       <div className="mt-6 overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-100">
@@ -141,14 +141,14 @@ function ProductDetail() {
 
             {product.brand && <p className="mt-2 text-base text-gray-500">Brand: {product.brand}</p>}
 
-            <div className="mt-4 flex items-end gap-3">
+            <div className="mt-4 flex flex-wrap items-end gap-3">
               <p className="text-3xl font-bold text-slate-900">${product.price}</p>
               {product.comparePrice && product.comparePrice > product.price && (
                 <p className="text-lg text-gray-400 line-through">${product.comparePrice}</p>
               )}
             </div>
 
-            <div className="mt-4 flex items-center gap-3 text-sm text-gray-600">
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-gray-600">
               <span className="font-semibold text-amber-500">{rating.toFixed(1)} / 5</span>
               <span>{reviewCount} reviews</span>
             </div>

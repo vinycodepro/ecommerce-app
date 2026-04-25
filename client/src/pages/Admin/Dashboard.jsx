@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSidebar from '../../components/Admin/AdminSidebar';
 import { 
-  ShoppingBagIcon, 
-  UsersIcon,
-  TicketIcon, 
-  CurrencyDollarIcon,
-  DocumentTextIcon,
-  ChartBarIcon
-} from '@heroicons/react/24/outline';
-import { Bars3Icon } from '@heroicons/react/24/outline';
+  BarChart3 as ChartBarIcon,
+  CircleDollarSign as CurrencyDollarIcon,
+  FileText as DocumentTextIcon,
+  Menu as Bars3Icon,
+  ShoppingBag as ShoppingBagIcon, 
+  Ticket as TicketIcon, 
+  Users as UsersIcon,
+} from 'lucide-react';
 import { adminService } from '../../services/adminService';
 import Loading from '../Shared/Loading';
 
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <AdminSidebar 
         isOpen={sidebarOpen} 
@@ -108,7 +108,7 @@ const AdminDashboard = () => {
         </header>
 
         {/* Main content area */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6">
           {/* Stats Grid */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
             {statCards.map((card) => (

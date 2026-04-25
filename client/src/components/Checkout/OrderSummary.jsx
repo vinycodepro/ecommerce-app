@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  TagIcon,
-  TruckIcon,
-  InformationCircleIcon,
-  CheckCircleIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+  CircleCheck as CheckCircleIcon,
+  Info as InformationCircleIcon,
+  Tag as TagIcon,
+  Truck as TruckIcon,
+  X as XMarkIcon,
+} from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';

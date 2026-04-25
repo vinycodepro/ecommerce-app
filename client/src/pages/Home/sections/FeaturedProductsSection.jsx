@@ -25,12 +25,12 @@ export default function FeaturedProductsSection() {
   if (loading) return <Loading />;
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center mb-12">
+    <section className="bg-gray-50 py-16">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-3xl font-bold text-gray-900">Featured Products</h2>
-          <Link to="/products" className="text-blue-600 font-semibold hover:text-blue-700">
-            View All Products →
+          <Link to="/products" className="font-semibold text-blue-600 hover:text-blue-700">
+            View All Products &rarr;
           </Link>
         </div>
         <ProductGrid products={products} />

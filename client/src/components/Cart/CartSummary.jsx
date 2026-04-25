@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  TruckIcon,
-  ShieldCheckIcon,
-  LockClosedIcon,
-  TagIcon,
-  InformationCircleIcon,
-} from '@heroicons/react/24/outline';
+  Info as InformationCircleIcon,
+  Lock as LockClosedIcon,
+  ShieldCheck as ShieldCheckIcon,
+  ShoppingBag as ShoppingBagIcon,
+  Tag as TagIcon,
+  Truck as TruckIcon,
+  X as XMarkIcon,
+} from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -354,6 +356,5 @@ const CartSummary = ({ onCheckout, showCheckoutButton = true, className = '' }) 
 };
 
 // Add these imports at the top if not already present
-import { ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline';
 
 export default CartSummary;

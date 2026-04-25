@@ -1,11 +1,10 @@
-// client/src/components/Layout/Footer.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  EnvelopeIcon,
-  PhoneIcon,
-  MapPinIcon,
-} from '@heroicons/react/24/outline';
+  Mail as EnvelopeIcon,
+  MapPin as MapPinIcon,
+  Phone as PhoneIcon,
+} from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -55,7 +54,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'Facebook',
-      href: 'https://facebook.com/vincyweb',
+      href: 'https://facebook.com/vincyshop',
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
@@ -64,7 +63,7 @@ const Footer = () => {
     },
     {
       name: 'Instagram',
-      href: 'https://instagram.com/vincyweb',
+      href: 'https://instagram.com/vincyshop',
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path fillRule="evenodd" d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987c6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.7-3.062-1.745-.614-1.045-.614-2.341 0-3.386.614-1.045 1.765-1.745 3.062-1.745s2.448.7 3.062 1.745c.614 1.045.614 2.341 0 3.386-.614 1.045-1.765 1.745-3.062 1.745zm7.548 0c-1.297 0-2.448-.7-3.062-1.745-.614-1.045-.614-2.341 0-3.386.614-1.045 1.765-1.745 3.062-1.745s2.448.7 3.062 1.745c.614 1.045.614 2.341 0 3.386-.614 1.045-1.765 1.745-3.062 1.745z" clipRule="evenodd" />
@@ -73,7 +72,7 @@ const Footer = () => {
     },
     {
       name: 'Twitter',
-      href: 'https://twitter.com/vincyweb',
+      href: 'https://twitter.com/vincyshop',
       icon: (props) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
@@ -139,187 +138,76 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-white">
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-          {/* Brand Section */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold mr-5 text-lg">Vincyweb</span>
-              </div>
-              <span className="ml-5 text-xl font-bold">Ecommerce Store</span>
-            </Link>
-            <p className="mt-4 text-gray-300 max-w-md">
-              Your one-stop destination for quality clothing, cutting-edge gadgets, 
-              and professional engineering tools. We're committed to providing the 
-              best shopping experience with fast shipping and excellent customer service.
-            </p>
-            
-        {/* Trust Badges */}
-        <div className="mt-8 pt-8 border-t border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Security Badges */}
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)]">
+          <div className="space-y-8">
             <div>
-              <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
-                Secure Shopping
-              </h3>
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center text-sm text-gray-300">
-                  <svg className="h-6 w-6 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                  </svg>
-                  256-bit SSL Secure
+              <Link to="/" className="inline-flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-base font-bold">
+                  VS
                 </div>
-                <div className="flex items-center text-sm text-gray-300">
-                  <svg className="h-6 w-6 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  PCI Compliant
+                <div>
+                  <span className="block text-xl font-bold">VincyShop</span>
+                  <span className="text-sm text-gray-400">Ecommerce Store</span>
                 </div>
-              </div>
+              </Link>
+              <p className="mt-4 max-w-md text-sm leading-6 text-gray-300 sm:text-base">
+                Your one-stop destination for quality clothing, cutting-edge gadgets,
+                and professional engineering tools with fast shipping and reliable support.
+              </p>
             </div>
 
-      {/* Payment Methods */}
-            <div>
-              <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-4">
-                We Accept
-              </h3>
-              <div className="flex items-center space-x-2">
-                {paymentMethods.map((method) => (
-                  <div
-                    key={method.name}
-                    className="flex items-center justify-center w-10 h-6 bg-white rounded-sm"
-                    title={method.name}
-                  >
-                    {method.icon}
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-200">
+                  Secure Shopping
+                </h3>
+                <div className="space-y-3 text-sm text-gray-300">
+                  <div className="flex items-center gap-2">
+                    <svg className="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                    </svg>
+                    256-bit SSL Secure
                   </div>
-                ))}
+                  <div className="flex items-center gap-2">
+                    <svg className="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    PCI Compliant
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Footer Links */}
-          {Object.entries(footerSections).map(([key, section]) => (
-            <div key={key}>
-              <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
-                {section.title}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+              <div>
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-200">
+                  We Accept
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {paymentMethods.map((method) => (
+                    <div
+                      key={method.name}
+                      className="flex h-10 w-14 items-center justify-center rounded-md bg-white px-2"
+                      title={method.name}
                     >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-            {/* Contact Info */}
-            <div className="mt-6 space-y-3">
-              <div className="flex items-center">
-                <EnvelopeIcon className="h-5 w-5 text-gray-400 mr-3" />
-                <span className="text-gray-300">support@ecommerce.com</span>
-              </div>
-              <div className="flex items-center">
-                <PhoneIcon className="h-5 w-5 text-gray-400 mr-3" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
-              </div>
-              <div className="flex items-start">
-                <MapPinIcon className="h-5 w-5 text-gray-400 mr-3 mt-0.5" />
-                <span className="text-gray-300">
-                  123 Commerce Street<br />
-                  Suite 100<br />
-                  San Francisco, CA 94105
-                </span>
+                      {method.icon}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-        {/* Newsletter Subscription */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-white">
-                Subscribe to our newsletter
-              </h3>
-              <p className="mt-2 text-gray-300">
-                Get the latest updates on new products and upcoming sales
-              </p>
-            </div>
-            <div>
-              <form className="flex flex-col sm:flex-row gap-3">
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="min-w-0 flex-1 bg-gray-800 border border-gray-700 rounded-md px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Enter your email"
-                />
-                <button
-                  type="submit"
-                  className="flex-shrink-0 bg-blue-600 py-2 px-6 rounded-md text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
-                >
-                  Subscribe
-                </button>
-              </form>
-              <p className="mt-2 text-sm text-gray-400">
-                By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      {/* Bottom Bar */}
-      <div className="bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-            <p className="text-sm text-gray-300">
-              © {currentYear} Ecommerce Store. All rights reserved.
-            </p>
-            <div className="flex items-center space-x-6 text-sm text-gray-300">
-              <Link to="/privacy" className="hover:text-white mr-3 transition-colors duration-200">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-white transition-colors duration-200">
-                Terms of Service
-              </Link>
-              <Link to="/sitemap" className="hover:text-white transition-colors duration-200">
-                Sitemap
-              </Link>
-              <Link to="/accessibility" className="hover:text-white transition-colors duration-200">
-                Accessibility
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Social Links */}
-         <div className="mt-6">
-              <h3 className="text-sm font-semibold text-gray-200 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200">
                 Follow Us
               </h3>
-              <div className="flex space-x-4 mt-3">
+              <div className="mt-3 flex flex-wrap gap-4">
                 {socialLinks.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    className="text-gray-400 transition-colors duration-200 hover:text-white"
                   >
                     <span className="sr-only">{item.name}</span>
                     <item.icon className="h-6 w-6" />
@@ -329,8 +217,111 @@ const Footer = () => {
             </div>
           </div>
 
-          
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-4">
+            {Object.entries(footerSections).map(([key, section]) => (
+              <div key={key}>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200">
+                  {section.title}
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {section.links.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        to={link.href}
+                        className="text-sm text-gray-300 transition-colors duration-200 hover:text-white sm:text-base"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
 
+        <div className="mt-10 grid gap-8 border-t border-gray-800 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+          <div className="space-y-3">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-200">
+              Contact
+            </h3>
+            <div className="space-y-3">
+              <div className="flex items-center">
+                <EnvelopeIcon className="mr-3 h-5 w-5 text-gray-400" />
+                <span className="text-sm text-gray-300 sm:text-base">support@ecommerce.com</span>
+              </div>
+              <div className="flex items-center">
+                <PhoneIcon className="mr-3 h-5 w-5 text-gray-400" />
+                <span className="text-sm text-gray-300 sm:text-base">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-start">
+                <MapPinIcon className="mr-3 mt-0.5 h-5 w-5 text-gray-400" />
+                <span className="text-sm text-gray-300 sm:text-base">
+                  123 Commerce Street<br />
+                  Suite 100<br />
+                  San Francisco, CA 94105
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-white">
+              Subscribe to our newsletter
+            </h3>
+            <p className="mt-2 text-sm text-gray-300 sm:text-base">
+              Get the latest updates on new products and upcoming sales.
+            </p>
+            <form className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="email-address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="min-w-0 flex-1 rounded-md border border-gray-700 bg-gray-800 px-4 py-3 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter your email"
+              />
+              <button
+                type="submit"
+                className="flex-shrink-0 rounded-md bg-blue-600 px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                Subscribe
+              </button>
+            </form>
+            <p className="mt-2 text-sm text-gray-400">
+              By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gray-800">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <p className="text-sm text-gray-300">
+              &copy; {currentYear} VincyShop. All rights reserved.
+            </p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+              <Link to="/privacy" className="transition-colors duration-200 hover:text-white">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="transition-colors duration-200 hover:text-white">
+                Terms of Service
+              </Link>
+              <Link to="/sitemap" className="transition-colors duration-200 hover:text-white">
+                Sitemap
+              </Link>
+              <Link to="/accessibility" className="transition-colors duration-200 hover:text-white">
+                Accessibility
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };

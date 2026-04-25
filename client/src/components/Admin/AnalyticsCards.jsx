@@ -1,14 +1,14 @@
 // client/src/components/Admin/AnalyticsCards.jsx
 import React from 'react';
 import {
-  CurrencyDollarIcon,
-  ShoppingBagIcon,
-  UsersIcon,
-  DocumentTextIcon,
-  ChartBarIcon,
-  ArrowUpIcon,
-  ArrowDownIcon,
-} from '@heroicons/react/24/outline';
+  ArrowDown as ArrowDownIcon,
+  ArrowUp as ArrowUpIcon,
+  BarChart3 as ChartBarIcon,
+  CircleDollarSign as CurrencyDollarIcon,
+  FileText as DocumentTextIcon,
+  ShoppingBag as ShoppingBagIcon,
+  Users as UsersIcon,
+} from 'lucide-react';
 
 const AnalyticsCards = ({ stats, loading }) => {
   if (loading) {

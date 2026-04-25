@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import UserList from '../../../components/Admin/UserList';
-import { Bars3Icon, UserPlusIcon, UsersIcon } from '@heroicons/react/24/outline';
+import { Menu as Bars3Icon, UserPlus as UserPlusIcon, Users as UsersIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
 import Loading from '../../Shared/Loading';
 import toast from 'react-hot-toast';
@@ -71,7 +71,7 @@ const AdminUsers = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
       <AdminSidebar 
         isOpen={sidebarOpen} 

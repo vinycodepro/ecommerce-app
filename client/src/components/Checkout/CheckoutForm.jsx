@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  CreditCardIcon,
-  MapPinIcon,
-  TruckIcon,
-  ShieldCheckIcon,
-  LockClosedIcon,
-} from '@heroicons/react/24/outline';
+  CreditCard as CreditCardIcon,
+  Lock as LockClosedIcon,
+  MapPin as MapPinIcon,
+  ShieldCheck as ShieldCheckIcon,
+  Truck as TruckIcon,
+} from 'lucide-react';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import OrderSummary from './OrderSummary';
@@ -232,13 +232,13 @@ const CheckoutForm = () => {
         {/* Progress Steps */}
         <div className="max-w-3xl mx-auto mb-8">
           <nav aria-label="Progress">
-            <ol className="flex items-center">
+            <ol className="grid grid-cols-1 gap-4 sm:flex sm:items-center">
               {steps.map((step, index) => (
                 <li
                   key={step.id}
-                  className={`relative flex-1 ${index !== steps.length - 1 ? 'pr-8 sm:pr-20' : ''}`}
+                  className={`relative flex-1 ${index !== steps.length - 1 ? 'sm:pr-8 lg:pr-20' : ''}`}
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center gap-3 sm:block">
                     <div
                       className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
                         currentStep >= step.id
@@ -254,7 +254,7 @@ const CheckoutForm = () => {
                     </div>
                     {index !== steps.length - 1 && (
                       <div
-                        className={`absolute top-5 left-10 -ml-px h-0.5 w-full ${
+                        className={`absolute left-10 top-5 hidden h-0.5 w-full -ml-px sm:block ${
                           currentStep > step.id ? 'bg-blue-600' : 'bg-gray-300'
                         }`}
                         aria-hidden="true"
@@ -262,7 +262,7 @@ const CheckoutForm = () => {
                     )}
                   </div>
                   <span
-                    className={`mt-2 text-sm font-medium ${
+                    className={`text-sm font-medium sm:mt-2 ${
                       currentStep >= step.id ? 'text-blue-600' : 'text-gray-500'
                     }`}
                   >
@@ -433,7 +433,7 @@ const CheckoutForm = () => {
                             onChange={(e) => handleShippingMethodChange(e.target.value)}
                             className="sr-only"
                           />
-                          <div className="flex w-full items-center justify-between">
+                          <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center">
                               <div className="text-sm">
                                 <span className="font-medium text-gray-900">
@@ -444,7 +444,7 @@ const CheckoutForm = () => {
                                 </p>
                               </div>
                             </div>
-                            <div className="text-sm font-medium text-gray-900">
+                            <div className="text-sm font-medium text-gray-900 sm:text-right">
                               {getCartTotal() >= method.freeThreshold ? (
                                 <span className="text-green-600">FREE</span>
                               ) : (
@@ -604,7 +604,7 @@ const CheckoutForm = () => {
                 </button>
                 
                 {/* Security Badges */}
-                <div className="mt-4 flex items-center justify-center space-x-4 text-xs text-gray-500">
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500">
                   <div className="flex items-center">
                     <ShieldCheckIcon className="h-4 w-4 text-green-500 mr-1" />
                     256-bit SSL Secure

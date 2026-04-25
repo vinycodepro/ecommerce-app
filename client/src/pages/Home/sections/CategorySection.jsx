@@ -71,7 +71,7 @@ export default function CategorySection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           
           
           {categories.map((cat) => {
@@ -84,7 +84,7 @@ export default function CategorySection() {
               <Link
                 key={cat.title}
                 to={cat.link}
-                className="relative rounded-xl p-8 text-white hover:scale-105 transition transform min-h-[300px] flex flex-col justify-end overflow-hidden"
+                className="relative flex min-h-[240px] flex-col justify-end overflow-hidden rounded-xl p-6 text-white transition hover:scale-[1.02] sm:min-h-[280px] sm:p-8"
                 style={{
                   backgroundImage: backgroundStyle,
                   backgroundSize: 'cover',
@@ -95,8 +95,8 @@ export default function CategorySection() {
                 <div className="absolute inset-0 bg-black/30"></div>
 
                 <div className="relative z-10">
-                  <h3 className="text-3xl font-extrabold text-white drop-shadow-md">{cat.title}</h3>
-                  <p className="opacity-90">{cat.description}</p>
+                  <h3 className="text-2xl font-extrabold text-white drop-shadow-md sm:text-3xl">{cat.title}</h3>
+                  <p className="mt-2 text-sm opacity-90 sm:text-base">{cat.description}</p>
                 </div>
               </Link>
             );
