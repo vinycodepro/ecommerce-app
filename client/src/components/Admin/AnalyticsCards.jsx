@@ -4,12 +4,11 @@ import {
   ArrowDown as ArrowDownIcon,
   ArrowUp as ArrowUpIcon,
   BarChart3 as ChartBarIcon,
-  CurrencyDollarIcon as circledollarsign,
   FileText as DocumentTextIcon,
   ShoppingBag as ShoppingBagIcon,
   Users as UsersIcon,
 } from 'lucide-react';
-
+import { CircleDollarSign as CircleDollarSignIcon } from 'lucide-react';
 const AnalyticsCards = ({ stats, loading }) => {
   if (loading) {
     return (
@@ -39,7 +38,7 @@ const AnalyticsCards = ({ stats, loading }) => {
       value: `$${stats?.totalRevenue?.toLocaleString() || '0'}`,
       previousValue: `$${stats?.previousPeriodRevenue?.toLocaleString() || '0'}`,
       change: stats?.revenueChange || 0,
-      icon: CircleDollarSign,
+      icon: CircleDollarSignIcon,
       color: 'bg-green-500',
       description: 'All time revenue',
     },
@@ -84,7 +83,7 @@ const AnalyticsCards = ({ stats, loading }) => {
       value: `$${stats?.averageOrderValue?.toFixed(2) || '0'}`,
       previousValue: `$${stats?.previousAvgOrderValue?.toFixed(2) || '0'}`,
       change: stats?.avgOrderValueChange || 0,
-      icon: CircleDollarSign,
+      icon: CircleDollarSignIcon,
       color: 'bg-pink-500',
       description: 'Average order value',
     },
@@ -202,7 +201,7 @@ export const CompactAnalyticsCards = ({ stats, loading }) => {
       name: 'Revenue',
       value: `$${stats?.totalRevenue ? (stats.totalRevenue / 1000).toFixed(1) + 'K' : '0'}`,
       change: stats?.revenueChange || 0,
-      icon: CircleDollarSign,
+      icon: CircleDollarSignIcon,
       color: 'text-green-600',
     },
     {
