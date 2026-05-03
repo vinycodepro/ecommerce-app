@@ -10,23 +10,23 @@ import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 import ProductDetail from './pages/Products/ProductDetail';
 import Cart from './components/Cart/Cart';
-//import Checkout from './pages/Checkout/Checkout';
+import Checkout from './pages/Checkout/Checkout';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import Profile from './pages/User/Profile';
-//import Orders from './pages/User/Orders';
-//import OrderDetails from './pages/User/OrderDetails';
-//import Wishlist from './pages/User/Wishlist';
 import AdminDashboard from './pages/Admin/Dashboard';
-//import AdminProducts from './pages/Admin/Products/AdminProducts';
 import AddProduct from './pages/Admin/Products/AddProduct';
-//import EditProduct from './pages/Admin/Products/EditProduct';
-//import AdminOrders from './pages/Admin/Orders/AdminOrders';
 import AdminUsers from './pages/Admin/Users/AdminUsers';
 import Analytics from './pages/Admin/Analytics/Analytics';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AdminRoute from './components/Auth/AdminRoute';
 import Loading from './pages/Shared/Loading';
+//import EditProduct from './pages/Admin/Products/EditProduct';
+//import AdminOrders from './pages/Admin/Orders/AdminOrders';
+//import AdminProducts from './pages/Admin/Products/AdminProducts';
+//import Orders from './pages/User/Orders';
+//import OrderDetails from './pages/User/OrderDetails';
+//import Wishlist from './pages/User/Wishlist';
 //import Error from './pages/Shared/Error';
 //import NotFound from './pages/Shared/NotFound';
 //'/src/pages/Admin/Orders/AdminOrders.jsx
@@ -44,31 +44,47 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetail />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/loading" element={<Loading />} />
                 {/*<Route path="/error" element={<Error />} />*/}
+                
+                {/* Protected routes */}
 
                 <Route element={<ProtectedRoute />}>
                   <Route path="/profile" element={<Profile />} />
                 </Route>
 
+               <Route path="/checkout" element={
+                  <ProtectedRoute>
+                    <Checkout />
+                  </ProtectedRoute>
+                } />
 
-                <Route path="/cart" element={<Cart />} />
+                {/*admin routes */}
 
                <Route path="/admin" element={<AdminRoute>
                 <AdminDashboard /> 
                 </AdminRoute>
                 } />
-
-                {/*
-              {/*<Route path="/checkout" element={
-                  <ProtectedRoute>
-                    <Checkout />
-                  </ProtectedRoute>
+  
+                <Route path="/admin/products/add" element={
+                  <AdminRoute>
+                    <AddProduct />
+                  </AdminRoute>
                 } />
-               */}
-
+                
+                <Route path="/admin/users" element={
+                  <AdminRoute>
+                    <AdminUsers />
+                  </AdminRoute>
+                } />
+                <Route path="/admin/analytics" element={
+                  <AdminRoute>
+                    <Analytics />
+                  </AdminRoute>
+                } />
                   {/*
                 <Route path="/orders" element={
                   <ProtectedRoute>
@@ -87,29 +103,6 @@ function App() {
                 } />
                  */}
 
-                {/* Admin Routes */}
-
-
-                <Route path="/admin/products/add" element={
-                  <AdminRoute>
-                    <AddProduct />
-                  </AdminRoute>
-                } />
-
-
-                <Route path="/admin/users" element={
-                  <AdminRoute>
-                    <AdminUsers />
-                  </AdminRoute>
-                } />
-                <Route path="/admin/analytics" element={
-                  <AdminRoute>
-                    <Analytics />
-                  </AdminRoute>
-                } />
-
-                
-                {/* 404 Route */}
                 {/* <Route path="*" element={<NotFound />} /> 
 
                <Route path="/admin/products/edit/:id" element={
@@ -118,21 +111,21 @@ function App() {
                   </AdminRoute>
                 } />
                 
+                  <Route path="/admin/products" element={
+                  <AdminRoute>
+                    <AdminProducts />
+                  </AdminRoute>
+                } />
+
                  <Route path="/admin/orders" element={
                   <AdminRoute>
                     <AdminOrders />
                   </AdminRoute>
                 } />
 
-                                <Route path="/admin/products" element={
-                  <AdminRoute>
-                    <AdminProducts />
-                  </AdminRoute>
-                } />
                 */}
-                  
-
-              </Routes>
+          
+            </Routes>
               
             </main>
             <Footer />

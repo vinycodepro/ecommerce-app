@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import {
   Building2 as BuildingOfficeIcon,
-  CircleCheck as CheckCircleIcon,
   Home as HomeIcon,
   MapPin as MapPinIcon,
 } from 'lucide-react';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const AddressForm = ({ 
   onAddressSubmit, 

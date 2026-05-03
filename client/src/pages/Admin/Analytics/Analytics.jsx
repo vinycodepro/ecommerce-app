@@ -110,7 +110,7 @@ const Analytics = () => {
                       title="Customer Lifetime Value"
                       value={`$${stats?.customerLifetimeValue?.toFixed(2) || '0'}`}
                       change={stats?.clvChange}
-                      icon={CurrencyDollarIcon}
+                      icon={CircleDollarSign}
                       description="Average customer value"
                       loading={loading}
                     />

@@ -1,11 +1,11 @@
 // client/src/components/Checkout/PaymentForm.jsx
 import React, { useState, useEffect } from 'react';
 import {
-  CircleCheck as CheckCircleIcon,
-  CreditCard as CreditCardIcon,
+    CreditCard as CreditCardIcon,
   Info as InformationCircleIcon,
   Lock as LockClosedIcon,
 } from 'lucide-react';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
   const [formData, setFormData] = useState({
