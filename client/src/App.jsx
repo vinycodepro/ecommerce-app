@@ -50,8 +50,7 @@ function App() {
                 <Route path="/loading" element={<Loading />} />
                 {/*<Route path="/error" element={<Error />} />*/}
                 
-                {/* Protected routes */}
-
+                {/* Protected Routes */}
                 <Route element={<ProtectedRoute />}>
                   <Route path="/profile" element={<Profile />} />
                 </Route>

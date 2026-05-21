@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import AnalyticsCards, { CompactAnalyticsCards, MetricCard } from '../../../components/Admin/AnalyticsCards';
-import { BarChart3 as ChartBarIcon, Calendar as CalendarIcon, Menu as Bars3Icon } from 'lucide-react';
+import { BarChart3 as ChartBarIcon, Calendar as CalendarIcon, Menu as Bars3Icon, CircleDollarSignIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
 import Loading from '../../Shared/Loading';
 
@@ -110,7 +110,7 @@ const Analytics = () => {
                       title="Customer Lifetime Value"
                       value={`$${stats?.customerLifetimeValue?.toFixed(2) || '0'}`}
                       change={stats?.clvChange}
-                      icon={CircleDollarSign}
+                      icon={CircleDollarSignIcon}
                       description="Average customer value"
                       loading={loading}
                     />

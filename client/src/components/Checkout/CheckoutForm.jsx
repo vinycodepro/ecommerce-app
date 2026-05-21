@@ -15,8 +15,11 @@ import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { orderService } from '../../services/orderService';
 import toast from 'react-hot-toast';
+console.log('checkout form ');
 
 const CheckoutForm = () => {
+  console.log('checkout form rendered and working');
+
   const navigate = useNavigate();
   const { cart, getCartTotal, getCartItemCount, clearCart } = useCart();
   const { user, isAuthenticated } = useAuth();
