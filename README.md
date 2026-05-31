@@ -1,4 +1,4 @@
-🛒 Vincyweb-Commerce
+VincySHOP
 
 Vincyweb-Commerce is a modern e-commerce web application that allows users to browse products, place orders, make payments, and track their purchases — all in one seamless online store experience.
 
