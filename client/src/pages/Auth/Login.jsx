@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginForm from '@/components/Auth/LoginForm';
-import Loading from '../Shared/Loading';
+import Loading from '@components/Shared/Loading';
 
 const Login = () => {
   const { isAuthenticated, loading } = useAuth();

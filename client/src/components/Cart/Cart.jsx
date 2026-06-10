@@ -2,7 +2,7 @@ import React from 'react';
 import CartSummary from '../../components/Cart/CartSummary';
 import CartItem from '../../components/Cart/CartItem';
 import { useCart } from '../../contexts/CartContext';
-import Loading from '../../pages/Shared/Loading';
+import Loading from '../../components/Shared/Loading';
 
 const Cart = () => {
 const { cart, loading } = useCart();

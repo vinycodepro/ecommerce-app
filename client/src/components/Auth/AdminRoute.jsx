@@ -2,7 +2,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import Loading from '../../pages/Shared/Loading';
+import Loading from '../../components/Shared/Loading';
 
 const AdminRoute = ({ children }) => {
   const { user, isAuthenticated, loading } = useAuth();

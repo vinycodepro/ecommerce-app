@@ -12,7 +12,7 @@ import {
   Users as UsersIcon,
 } from 'lucide-react';
 import { adminService } from '../../services/adminService';
-import Loading from '../Shared/Loading';
+import Loading from '@components/Shared/Loading';
 
 const AdminDashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

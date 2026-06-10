@@ -5,7 +5,7 @@ import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import UserList from '../../../components/Admin/UserList';
 import { Menu as Bars3Icon, UserPlus as UserPlusIcon, Users as UsersIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
-import Loading from '../../Shared/Loading';
+import Loading from '@components/Shared/Loading';
 import toast from 'react-hot-toast';
 
 const AdminUsers = () => {

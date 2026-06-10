@@ -5,7 +5,7 @@ import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import OrderList from '../../../components/Admin/OrderList';
 import { FileText as DocumentTextIcon, Menu as Bars3Icon, Plus as PlusIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
-import Loading from '../../Shared/Loading';
+import Loading from '@components/Shared/Loading';
 import toast from 'react-hot-toast';
 
 const AdminOrders = () => {

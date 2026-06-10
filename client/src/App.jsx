@@ -20,7 +20,7 @@ import AdminUsers from './pages/Admin/Users/AdminUsers';
 import Analytics from './pages/Admin/Analytics/Analytics';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AdminRoute from './components/Auth/AdminRoute';
-import Loading from './pages/Shared/Loading';
+import Loading from './components/Shared/Loading';
 //import EditProduct from './pages/Admin/Products/EditProduct';
 //import AdminOrders from './pages/Admin/Orders/AdminOrders';
 //import AdminProducts from './pages/Admin/Products/AdminProducts';

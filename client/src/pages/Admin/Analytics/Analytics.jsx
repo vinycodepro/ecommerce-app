@@ -5,7 +5,7 @@ import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import AnalyticsCards, { CompactAnalyticsCards, MetricCard } from '../../../components/Admin/AnalyticsCards';
 import { BarChart3 as ChartBarIcon, Calendar as CalendarIcon, Menu as Bars3Icon, CircleDollarSignIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
-import Loading from '../../Shared/Loading';
+import Loading from '@components/Shared/Loading';
 
 const Analytics = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

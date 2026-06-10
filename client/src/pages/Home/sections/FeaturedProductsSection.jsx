@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { productService } from "@/services/productService";
 import ProductGrid from "../../../components/Products/ProductGrid";
-import Loading from "../../Shared/Loading";
+import Loading from "@components/Shared/Loading";
 
 export default function FeaturedProductsSection() {
   const [products, setProducts] = useState([]);

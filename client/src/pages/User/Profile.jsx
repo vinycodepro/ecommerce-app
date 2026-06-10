@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import ProfileHeader from "@/components/profile/ProfileHeader";
 import ProfileTabs from "@/components/profile/ProfileTabs";
+import Loading from "@/components/Shared/Loading";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
@@ -19,7 +20,7 @@ const ProfilePage = () => {
       .catch(err => console.error(err));
   }, []);
 
-  if (!user) return <p>Loading profile...</p>;
+  if (!user) return <Loading />;
 
   return (
     <div className="profile-page max-w-4xl mx-auto p-4">
