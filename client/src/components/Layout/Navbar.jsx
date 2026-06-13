@@ -1,137 +1,563 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import {
+  Menu,
+  X,
+  ShoppingCart,
+  Heart,
+  Package
+} from "lucide-react";
+
 import { useAuth } from "@/contexts/AuthContext";
 import { useCart } from "@/contexts/CartContext";
+
 import { mainLinks } from "@/config/navigation";
+
+import Searchbar from "../UI/Searchbar";
 import NavItem from "./Navbar/NavItem";
 import UserMenu from "./UserMenu";
-import Searchbar from "../UI/Searchbar";
-import { Menu as Bars3Icon, ShoppingCart, X as XMarkIcon } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Navbar() {
+
   const [open, setOpen] = useState(false);
+
   const { user, logout, isAuthenticated } = useAuth();
+
   const { getCartItemCount } = useCart();
-  const location = useLocation();
+
   const navigate = useNavigate();
+
   const cartCount = getCartItemCount();
-  const isProductRoute =
-    location.pathname === "/products" || location.pathname.startsWith("/products/");
 
   const handleLogout = () => {
+
     logout();
+
     navigate("/");
+
+    setOpen(false);
+
   };
 
+  const location = useLocation();
+  
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
+
   return (
+
     <nav
-      className="sticky top-0 z-50 bg-gradient-to-r from-blue-600/70 via-indigo-600/70 to-purple-600/70 shadow-lg backdrop-blur-xl"
+      className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-2xl border-b border-white/10 shadow-lg
+      "
     >
-      <div className={`mx-auto max-w-7xl px-4 ${isProductRoute ? "py-2 md:h-14 md:py-0" : "py-3 md:h-16 md:py-0"}`}>
-        <div className="flex items-center justify-between gap-3">
+
+      <div className="mx-auto max-w-7xl px-4">
+
+        {/* DESKTOP */}
+
+        <div className="hidden md:flex h-16 items-center gap-6">
+
+          {/* LOGO */}
+
           <Link
             to="/"
-            className={`shrink-0 font-bold text-white drop-shadow-lg ${isProductRoute ? "text-base sm:text-lg" : "text-lg sm:text-xl"}`}
+            className="
+            text-2xl
+
+            font-extrabold
+
+            tracking-tight
+
+            text-white
+
+            shrink-0
+            "
           >
-            Vincy<span className="text-yellow-300">Shop</span>
+
+            Vincy
+
+            <span className="text-violet-500">
+
+              Shop
+
+            </span>
+
           </Link>
 
-          {!isProductRoute && (
-            <Searchbar className="hidden md:block md:flex-1 md:max-w-sm lg:max-w-md" />
-          )}
 
-          <div className="hidden items-center space-x-4 md:flex lg:space-x-5">
+          {/* LINKS */}
+
+          <div className="flex items-center gap-6">
+
             {mainLinks.map((link) => (
-              <NavItem key={link.path} to={link.path}>
+
+              <NavItem
+
+                key={link.path}
+
+                to={link.path}
+
+              >
+
                 {link.name}
+
               </NavItem>
+
             ))}
 
-            <Link to="/cart" className="relative group">
-              <ShoppingCart
-                className={`${isProductRoute ? "h-6 w-6" : "h-7 w-7"} text-white transition drop-shadow-lg group-hover:scale-110 group-hover:text-yellow-300`}
+          </div>
+
+
+          {/* SEARCH */}
+
+          <div className="flex-1 flex justify-center">
+
+            <Searchbar className=" w-full max-w-xl" />
+
+          </div>
+
+
+          {/* ACTIONS */}
+
+          <div className="flex items-center gap-5">
+
+            {isAuthenticated && (
+
+              <>
+
+                <Link to="/wishlist" className=" text-slate-300
+                  hover:text-white
+                  transition
+                  "  >
+
+                  <Heart className="w-5 h-5"/>
+
+                </Link>
+
+                <Link
+
+                  to="/orders" className="
+                  text-slate-300
+                  hover:text-white
+                  transition
+                  "
+                >
+
+                  <Package className="w-5 h-5"/>
+
+                </Link>
+
+              </>
+
+            )}
+
+
+            {/* CART */}
+
+            <Link
+
+              to="/cart"
+
+              className="relative group"
+
+            >
+
+              <ShoppingCart className="w-6 h-6  text-slate-300  group-hover:text-white group-hover:scale-110 transition"
+
               />
 
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-yellow-400 text-xs font-bold text-black shadow-lg animate-pulse">
-                  {cartCount}
-                </span>
-              )}
+              {
+
+                cartCount > 0 && (
+
+                  <span className="absolute-top-2-right-2 h-5 min-w-5 px-1 rounded-full bg-violet-600
+                    text-white text-[10px] font-bold flex items-center justify-center" >
+
+                    {cartCount}
+
+                  </span>
+
+                )
+
+              }
+
             </Link>
 
-            {isAuthenticated ? (
-              <UserMenu user={user} logout={handleLogout} />
-            ) : (
-              <>
-                <NavItem to="/login">Login</NavItem>
-                <NavItem to="/register">Sign Up</NavItem>
-              </>
-            )}
+
+            {
+
+              isAuthenticated
+
+              ?
+
+              (
+
+                <UserMenu
+
+                  user={user}
+
+                  logout={handleLogout}
+
+                />
+
+              )
+
+              :
+
+              (
+
+                <>
+
+                  <NavItem to="/login">
+
+                    Login
+
+                  </NavItem>
+
+                  <Link
+
+                    to="/register" className=" px-4  py-2 rounded-full
+                    bg-violet-600
+                    hover:bg-violet-700
+                    text-white
+                    font-medium
+                    transition
+                    "
+                  >
+
+                    Sign Up
+
+                  </Link>
+
+                </>
+
+              )
+
+            }
+
           </div>
 
-          <div className="flex items-center gap-3 md:hidden">
-            <Link to="/cart" className="relative text-white">
-              <ShoppingCart className={`${isProductRoute ? "h-5 w-5" : "h-6 w-6"}`} />
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-yellow-400 px-1 text-[10px] font-bold text-black">
-                  {cartCount}
-                </span>
-              )}
+        </div>
+
+
+        {/* MOBILE HEADER */}
+
+        <div
+          className="
+          md:hidden
+          h-16
+          flex
+          items-center
+          justify-between
+          "
+        >
+
+          <Link
+            to="/"
+            className="
+            text-2xl
+            font-extrabold
+            text-white
+            "
+          >
+
+            Vincy
+            <span className="text-violet-500">
+              Shop
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-4">
+
+            <Link
+
+              to="/cart"
+
+              className="relative"
+
+            >
+
+              <ShoppingCart className="w-6 h-6 text-white"/>
+
+              {
+
+                cartCount > 0 && (
+
+                  <span
+                    className="absolute-top-2-right-2  h-5 min-w-5 rounded-full bg-violet-600 text-white text-[10px]
+                    font-bold
+                    flex
+                    items-center
+                    justify-center
+                    "
+                  >
+
+                    {cartCount}
+
+                  </span>
+
+                )
+
+              }
+
             </Link>
+
 
             <button
-              onClick={() => setOpen(!open)}
+
+              onClick={() => setOpen(true)}
+
               className="text-white"
-              aria-label="Toggle menu"
+
             >
-              {open ? (
-                <XMarkIcon className={`${isProductRoute ? "h-5 w-5" : "h-6 w-6"}`} />
-              ) : (
-                <Bars3Icon className={`${isProductRoute ? "h-5 w-5" : "h-6 w-6"}`} />
-              )}
+
+              <Menu className="w-7 h-7"/>
+
             </button>
+
           </div>
+
         </div>
+
       </div>
 
-      {open && (
-        <div className="space-y-3 border-t border-white/20 bg-gradient-to-r from-blue-600/80 via-indigo-600/80 to-purple-600/80 px-4 pb-4 pt-4 shadow-2xl md:hidden backdrop-blur-xl">
-          {!isProductRoute && <Searchbar className="w-full" />}
 
-          {mainLinks.map((link) => (
-            <NavItem key={link.path} to={link.path} onClick={() => setOpen(false)}>
-              {link.name}
-            </NavItem>
-          ))}
+      {/* BACKDROP */}
 
-          {isAuthenticated ? (
-            <>
-              <NavItem to="/wishlist" onClick={() => setOpen(false)}>Wishlist</NavItem>
-              <NavItem to="/profile" onClick={() => setOpen(false)}>Profile</NavItem>
-              <NavItem to="/orders" onClick={() => setOpen(false)}>Orders</NavItem>
+      {
 
-              {user?.role === "admin" && (
-                <NavItem to="/admin" onClick={() => setOpen(false)}>Admin</NavItem>
-              )}
+        open && (
 
-              <button
-                onClick={() => {
-                  handleLogout();
-                  setOpen(false);
-                }}
-                className="w-full px-3 py-2 text-left text-red-100"
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <NavItem to="/login" onClick={() => setOpen(false)}>Login</NavItem>
-              <NavItem to="/register" onClick={() => setOpen(false)}>Sign Up</NavItem>
-            </>
-          )}
+          <div className="fixed inset-0 bg-black/50 z-40 "onClick={() => setOpen(false)}  />
+
+        )
+
+      }
+
+
+      {/* DRAWER */}
+
+      <div
+
+        className={`fixed top-0 right-0 h-dvh w-[85%] max-w-sm bg-slate-950 backdrop-blur-2xl border-l border-white/10 shadow-2xl z-50 p-6 transition-transform duration-300
+
+        ${open
+
+          ?
+
+          "translate-x-0"
+
+          :
+
+          "translate-x-full"
+
+        }
+
+        `}
+
+      >
+
+        {/* HEADER */}
+
+        <div
+
+          className="
+
+          flex
+
+          items-center
+
+          justify-between
+
+          mb-6
+
+          "
+
+        >
+
+          <h2
+
+            className="
+
+            text-xl
+
+            font-bold
+
+            text-white
+
+            "
+
+          >
+
+            Menu
+
+          </h2>
+
+          <button
+
+            onClick={() => setOpen(false)}
+
+            className="text-white"
+
+          >
+
+            <X/>
+
+          </button>
+
         </div>
-      )}
+
+
+        {/* SEARCH */}
+
+        <Searchbar className="mb-8"/>
+
+
+        {/* SHOP */}
+
+        <div className="space-y-2 overflow-y-auto max-h-[calc(100dvh-120px)]">
+
+          <p className="text-xs uppercase tracking-widest text-slate-500 mb-2">
+
+            Shop
+
+          </p>
+
+
+          {
+
+            mainLinks.map((link)=>(
+
+              <NavItem
+
+                key={link.path}
+
+                to={link.path}
+
+                onClick={() => setOpen(false)}
+
+              >
+
+                {link.name}
+
+              </NavItem>
+
+            ))
+
+          }
+
+        </div>
+
+
+        {/* USER */}
+
+        {
+
+          isAuthenticated && (
+
+            <div className="mt-8 space-y-2">
+
+              <p
+
+                className="
+
+                text-xs
+
+                uppercase
+
+                tracking-widest
+
+                text-slate-500
+
+                "
+
+              >
+
+                You
+
+              </p>
+
+              <NavItem
+
+                to="/wishlist"
+
+                onClick={() => setOpen(false)}
+
+              >
+
+                Wishlist
+
+              </NavItem>
+
+              <NavItem
+
+                to="/orders"
+
+                onClick={() => setOpen(false)}
+
+              >
+
+                Orders
+
+              </NavItem>
+
+              <NavItem
+
+                to="/profile"
+
+                onClick={() => setOpen(false)}
+
+              >
+
+                Profile
+
+              </NavItem>
+
+              {
+
+                user?.role === "admin" && (
+
+                  <NavItem to="/admin" onClick={() => setOpen(false)}>
+
+                    Admin Dashboard
+
+                  </NavItem>
+
+                )
+
+              }
+
+              <button onClick={handleLogout} className=" text-red-400 hover:text-red-300 mt-4
+                "
+
+              >
+
+                Logout
+
+              </button>
+
+            </div>
+
+          )
+
+        }
+
+      </div>
+
     </nav>
+
   );
+
 }

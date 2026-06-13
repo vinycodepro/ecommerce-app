@@ -5,7 +5,7 @@ export const getProducts = async (req, res) => {
   try {
     const products = await Product.find({}); // fetch all products
     res.json({
-      products,          // this is what your frontend expects
+      products,
       totalProducts: products.length,
       currentPage: 1,
       totalPages: 1,

@@ -192,7 +192,7 @@ export const CartProvider = ({ children }) => {
   const clearCart = async () => {
     try {
       if (isAuthenticated) {
-        await cartService.updateCart([]);
+        await cartService.clearCart();
       } else {
         localStorage.removeItem('cart');
       }

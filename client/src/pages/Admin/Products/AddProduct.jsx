@@ -6,24 +6,45 @@ function AddProduct() {
     name: "",
     price: "",
     description: "",
-    image: "",
+    images: [
+      {url: "", alt: "", publicId: ""}
+    ],
     category: "",
-    stock: ""
+    subcategory: "",
+    inventory: {
+      stock: ""
+    },
+    brand: ""
   });
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
 
-  const submitProduct = async () => {
-    await axios.post("https://ecommerce-app-1-pxaw.onrender.com/api/products",
-    product,
-    {
-      withCredentials: true,
-    }
-  );
+const submitProduct = async () => {
+  try {
+    const formattedProduct = {
+      ...product,
+      price: Number(product.price),
+      inventory: {
+        ...product.inventory,
+        stock: Number(product.inventory.stock)
+      }
+    };
+
+    const res = await axios.post(
+      "https://ecommerce-app-1-pxaw.onrender.com/api/products",
+      formattedProduct,
+      { withCredentials: true }
+    );
+
     alert("Product added!");
-  };
+    console.log(res.data);
+
+  } catch (error) {
+    console.log(error.response?.data);
+  }
+};
 
   return (
 <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md">
@@ -47,12 +68,21 @@ function AddProduct() {
       className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
 
-    <input
-      name="image"
-      placeholder="Image URL"
-      onChange={handleChange}
-      className="border border-gray-300 rounded-lg p-3 col-span-1 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-    />
+   <input
+  placeholder="Image URL"
+  onChange={(e) =>
+    setProduct({
+      ...product,
+      images: [
+        {
+          ...product.images[0],
+          url: e.target.value
+        }
+      ]
+    })
+  }
+  className="border border-gray-300 rounded-lg p-3 col-span-1 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
 
     <input
       name="category"
@@ -62,9 +92,23 @@ function AddProduct() {
     />
 
     <input
-      name="stock"
+      name="subcategory"
+      placeholder="Subcategory"
+      onChange={handleChange}
+      className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <input
+      name="inventory.stock"
       placeholder="Stock"
       type="number"
+      onChange={handleChange}
+      className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <input
+      name="brand"
+      placeholder="Brand"
       onChange={handleChange}
       className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />

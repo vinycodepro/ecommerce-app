@@ -4,22 +4,30 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 import ProductCard from "../../components/Products/ProductCard"; 
+import Loading from "../../components/Shared/Loading";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const { user } = useAuth();
   const { cart, addToCart, updateCartItem } = useCart();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("https://ecommerce-app-1-pxaw.onrender.com/api/products")
       .then(res => {
-      
         setProducts(res.data.products);
+        setLoading(false);
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
-  
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {products.map(product => (

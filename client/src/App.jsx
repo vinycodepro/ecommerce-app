@@ -23,7 +23,7 @@ import AdminRoute from './components/Auth/AdminRoute';
 import Loading from './components/Shared/Loading';
 //import EditProduct from './pages/Admin/Products/EditProduct';
 //import AdminOrders from './pages/Admin/Orders/AdminOrders';
-//import AdminProducts from './pages/Admin/Products/AdminProducts';
+import AdminProducts from './pages/Admin/Products/AdminProducts';
 //import Orders from './pages/User/Orders';
 //import OrderDetails from './pages/User/OrderDetails';
 //import Wishlist from './pages/User/Wishlist';
@@ -38,7 +38,7 @@ function App() {
         <CartProvider>
           <div className="min-h-screen bg-gray-50 flex flex-col">
             <Navbar />
-            <main className="flex-grow">
+            <main className="grow">
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<Home />} />
@@ -66,6 +66,12 @@ function App() {
                <Route path="/admin" element={<AdminRoute>
                 <AdminDashboard /> 
                 </AdminRoute>
+                } />
+
+               <Route path="/admin/products" element={
+                  <AdminRoute>
+                    <AdminProducts />
+                  </AdminRoute>
                 } />
   
                 <Route path="/admin/products/add" element={
@@ -110,11 +116,7 @@ function App() {
                   </AdminRoute>
                 } />
                 
-                  <Route path="/admin/products" element={
-                  <AdminRoute>
-                    <AdminProducts />
-                  </AdminRoute>
-                } />
+
 
                  <Route path="/admin/orders" element={
                   <AdminRoute>

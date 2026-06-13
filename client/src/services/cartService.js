@@ -16,6 +16,11 @@ async addItemToCart(productId, quantity) {
     return response.data.items;
     },
 
+  async clearCart() {
+      const response = await api.delete('/cart/items');
+      return response.data.items;
+    },
+
   async updateCart(productId, quantity, attributes) {
     const response = await api.put(`/cart/items/${productId}`, { quantity, attributes });
     return response.data.items;

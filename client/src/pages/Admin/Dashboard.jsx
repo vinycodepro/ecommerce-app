@@ -119,7 +119,7 @@ const AdminDashboard = () => {
               >
                 <div className="p-5">
                   <div className="flex items-center">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <div className={`${card.color} rounded-md p-3`}>
                         <card.icon className="h-6 w-6 text-white" />
                       </div>
@@ -158,7 +158,7 @@ const AdminDashboard = () => {
                       {recentOrders.slice(0, 5).map((order) => (
                         <li key={order._id} className="py-4">
                           <div className="flex items-center space-x-4">
-                            <div className="flex-shrink-0">
+                            <div className="shrink-0">
                               <DocumentTextIcon className="h-8 w-8 text-gray-400" />
                             </div>
                             <div className="flex-1 min-w-0">

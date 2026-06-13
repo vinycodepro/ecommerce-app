@@ -1,4 +1,5 @@
 // server/routes/products.js
+
 import express from 'express';
 import Product from '../models/Product.js';
 import auth from '../middleware/auth.js';
@@ -6,9 +7,13 @@ import admin from '../middleware/admin.js';
 
 const router = express.Router();
 
+router.get("/users", (req, res) => {
+    console.log("GET /users hit");
+    res.send("Route works!");
+});
+
 // @route   GET /api/products
-// @desc    Get all products with filtering, sorting, pagination
-// @access  Public
+
 router.get('/', async (req, res) => {
   try {
     const {
@@ -76,9 +81,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route   GET /api/products/:id
-// @desc    Get single product
-// @access  Public
 router.get('/:id', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
@@ -122,6 +124,8 @@ router.post('/', auth, admin, async (req, res) => {
     });
   } catch (error) {
     console.error('Create product error:', error);
+    console.error('error message:', error.message);
+    console.error('error stack:', error.stack);
     if (error.code === 11000) {
       return res.status(400).json({ message: 'SKU already exists' });
     }

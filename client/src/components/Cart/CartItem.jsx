@@ -1,15 +1,8 @@
 // client/src/components/Cart/CartItem.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Heart as HeartIcon,
-  Minus as MinusIcon,
-  Plus as PlusIcon,
-  Trash2 as TrashIcon,
-} from 'lucide-react';
-import {
-  HeartIcon as HeartSolidIcon,
-} from '@heroicons/react/24/solid';
+import { Heart as HeartIcon, Minus as MinusIcon, Plus as PlusIcon, Trash2 as TrashIcon } from 'lucide-react';
+import { HeartIcon as HeartSolidIcon} from '@heroicons/react/24/solid';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
@@ -93,7 +86,7 @@ const handleQuantityChange = async (newQuantity) => {
     }`}>
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:space-x-4 sm:gap-0">
         {/* Product Image */}
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <Link to={`/products/${item.product._id}`}>
             <img
               src={item.product.images[0]?.url || '/api/placeholder/200/200'}

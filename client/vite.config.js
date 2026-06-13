@@ -26,6 +26,15 @@ export default defineConfig({
     }, {
       find: '@',
       replacement: path.resolve(__dirname, 'src')
+    }, {
+      find: '@pages',
+      replacement: path.resolve(__dirname, 'src/pages')
+    }, {
+      find: '@contexts',
+      replacement: path.resolve(__dirname, 'src/contexts')
+    }, {
+      find: '@styles',
+      replacement: path.resolve(__dirname, 'src/styles')
     }]
   },
   server: {
