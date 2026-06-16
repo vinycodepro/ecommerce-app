@@ -53,17 +53,27 @@ app.use((req, res, next) => {
   next();
 });
 
+app._router.stack.forEach((middleware) => {
+  if (middleware.route) {
+    console.log(middleware.route.path);
+  }
+});
+
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/products.js';
 import cartRoutes from './routes/cart.js';
 import userRoutes from './routes/users.js';
 import profileRoutes from './routes/profile.js';
+import analyticsRoutes from './routes/analytics.js';
+import orderRoutes from './routes/orders.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/orders', orderRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

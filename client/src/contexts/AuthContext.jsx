@@ -65,11 +65,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = async () => {
+const logout = async () => {
+  if (!user) return; 
+
+  try {
     await authService.logout();
+  } finally {
     setUser(null);
     setError('');
-  };
+  }
+};
 
   const updateProfile = async (profileData) => {
     try {

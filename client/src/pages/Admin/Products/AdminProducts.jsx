@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "@styles/components.css";
+import { useNavigate } from "react-router-dom";
 
 function AdminProducts() {
     const [products, setProducts] = useState([]);
@@ -37,7 +38,7 @@ function AdminProducts() {
             <div className="admin-header">
             <h1>Product Management</h1>
 
-            <button className="add-product-btn"
+            <button onClick={() => navigate("/admin/addProduct")} className="add-product-btn"
             >+ Add Product</button>
             </div>
 

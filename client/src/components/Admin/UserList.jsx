@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {
   ArrowUpDown as ChevronUpDownIcon,
-  Ban,
+  Ban as BanIcon,
   Calendar as CalendarIcon,
   Check as CheckIcon,
   Eye as EyeIcon,
@@ -66,7 +66,7 @@ const UserList = ({ users, loading, onUserUpdate, onRefresh }) => {
       </span>
     ) : (
       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-        <Ban className="h-3 w-3 mr-1" />
+        <BanIcon className="h-3 w-3 mr-1" />
         Inactive
       </span>
     );
@@ -431,7 +431,7 @@ const UserList = ({ users, loading, onUserUpdate, onRefresh }) => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="flex-shrink-0 h-10 w-10">
+                      <div className="shrink-0 h-10 w-10">
                         {user.avatar ? (
                           <img
                             className="h-10 w-10 rounded-full"

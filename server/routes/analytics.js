@@ -31,4 +31,5 @@ router.get ('/dashboard', auth , admin, async (req, res) => {
 
 });
 
+export default router;
 //get sales report

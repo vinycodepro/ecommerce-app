@@ -23,10 +23,12 @@ export const adminService = {
       throw error;
     }
   },
-
+  
   // Get dashboard statistics
   async getDashboardStats() {
     try {
+      console.log(api.defaults.baseURL);
+      console.log(`${api.defaults.baseURL}/analytics/dashboard`);
       const response = await api.get('/analytics/dashboard');
       return response.data;
     } catch (error) {
@@ -70,7 +72,7 @@ export const adminService = {
   // Get recent orders
   async getRecentOrders() {
     try {
-      const response = await api.get('/admin/orders?limit=5');
+      const response = await api.get('/orders/admin/orders?limit=5');
       return response.data;
     } catch (error) {
       console.error('Error fetching recent orders:', error);
@@ -81,7 +83,7 @@ export const adminService = {
   // Get all products
   async getProducts(params = {}) {
     try {
-      const response = await api.get('/admin/products', { params });
+      const response = await api.get('/products/admin/products', { params });
       return response.data;
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -92,7 +94,7 @@ export const adminService = {
   // Create product
   async createProduct(productData) {
     try {
-      const response = await api.post('/products', productData);
+      const response = await api.post('/products/admin/products', productData);
       return response.data;
     } catch (error) {
       console.error('Error creating product:', error);
@@ -103,7 +105,7 @@ export const adminService = {
   // Update product
   async updateProduct(productId, productData) {
     try {
-      const response = await api.put(`/products/${productId}`, productData);
+      const response = await api.put(`/products/admin/products/${productId}`, productData);
       return response.data;
     } catch (error) {
       console.error('Error updating product:', error);
@@ -114,7 +116,7 @@ export const adminService = {
   // Delete product
   async deleteProduct(productId) {
     try {
-      const response = await api.delete(`/products/${productId}`);
+      const response = await api.delete(`/products/admin/products/${productId}`);
       return response.data;
     } catch (error) {
       console.error('Error deleting product:', error);
@@ -125,7 +127,7 @@ export const adminService = {
   // Get all orders
   async getOrders(params = {}) {
     try {
-      const response = await api.get('/admin/orders', { params });
+      const response = await api.get('/orders/admin/orders', { params });
       return response.data;
     } catch (error) {
       console.error('Error fetching orders:', error);
@@ -136,7 +138,7 @@ export const adminService = {
   // Update order status
   async updateOrderStatus(orderId, statusData) {
     try {
-      const response = await api.put(`/orders/${orderId}/status`, statusData);
+      const response = await api.put(`/orders/admin/orders/${orderId}/status`, statusData);
       return response.data;
     } catch (error) {
       console.error('Error updating order status:', error);
@@ -147,7 +149,7 @@ export const adminService = {
   // Get all users
   async getUsers(params = {}) {
     try {
-      const response = await api.get('/admin/users', { params });
+      const response = await api.get('/users/admin/users', { params });
       return response.data;
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -158,7 +160,7 @@ export const adminService = {
   // Update user role
   async updateUserRole(userId, roleData) {
     try {
-      const response = await api.put(`/admin/users/${userId}/role`, roleData);
+      const response = await api.put(`/users/admin/users/${userId}/role`, roleData);
       return response.data;
     } catch (error) {
       console.error('Error updating user role:', error);
@@ -169,7 +171,7 @@ export const adminService = {
   // Toggle user status
   async toggleUserStatus(userId) {
     try {
-      const response = await api.patch(`/admin/users/${userId}/status`);
+      const response = await api.patch(`/users/admin/users/${userId}/status`);
       return response.data;
     } catch (error) {
       console.error('Error toggling user status:', error);
@@ -180,7 +182,7 @@ export const adminService = {
   // Get all coupons
   async getCoupons(params = {}) {
     try {
-      const response = await api.get('/coupons', { params });
+      const response = await api.get('/coupons/admin/coupons', { params });
       return response.data;
     } catch (error) {
       console.error('Error fetching coupons:', error);
@@ -191,7 +193,7 @@ export const adminService = {
   // Create coupon
   async createCoupon(couponData) {
     try {
-      const response = await api.post('/coupons', couponData);
+      const response = await api.post('/coupons/admin/coupons', couponData);
       return response.data;
     } catch (error) {
       console.error('Error creating coupon:', error);
@@ -202,7 +204,7 @@ export const adminService = {
   // Update coupon
   async updateCoupon(couponId, couponData) {
     try {
-      const response = await api.put(`/coupons/${couponId}`, couponData);
+      const response = await api.put(`/coupons/admin/coupons/${couponId}`, couponData);
       return response.data;
     } catch (error) {
       console.error('Error updating coupon:', error);
@@ -213,7 +215,7 @@ export const adminService = {
   // Delete coupon
   async deleteCoupon(couponId) {
     try {
-      const response = await api.delete(`/coupons/${couponId}`);
+      const response = await api.delete(`/coupons/admin/coupons/${couponId}`);
       return response.data;
     } catch (error) {
       console.error('Error deleting coupon:', error);
@@ -224,7 +226,7 @@ export const adminService = {
   // Toggle coupon active status
   async toggleCouponActive(couponId) {
     try {
-      const response = await api.patch(`/coupons/${couponId}/toggle`);
+      const response = await api.patch(`/coupons/admin/coupons/${couponId}/toggle`);
       return response.data;
     } catch (error) {
       console.error('Error toggling coupon active status:', error);
