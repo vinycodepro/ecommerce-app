@@ -3,19 +3,16 @@ import React, { useState, useEffect } from "react";
 import ProfileHeader from "@/components/profile/ProfileHeader";
 import ProfileTabs from "@/components/profile/ProfileTabs";
 import Loading from "@/components/Shared/Loading";
+import api from "@/services/api";
 
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("https://ecommerce-app-1-pxaw.onrender.com/api/users/profile", {
-      method: "GET",
-      credentials: "include"
-    })
-      .then(res => res.json())
-      .then(data => {
-        setUser(data);
-        console.log("Fetched user profile:", data);
+    api.get("/users/profile")
+      .then(res => {
+        setUser(res.data);
+        console.log("Fetched user profile:", res.data);
       })
       .catch(err => console.error(err));
   }, []);

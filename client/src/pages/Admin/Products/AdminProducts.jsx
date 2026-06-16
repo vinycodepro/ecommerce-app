@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import "@styles/components.css";
 import { useNavigate } from "react-router-dom";
-
+import api from "../../../services/api";
+import AdminSidebar from "../../../components/Admin/AdminSidebar";
 function AdminProducts() {
     const [products, setProducts] = useState([]);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+    const navigate = useNavigate();
     const [pagination, setPagination] = useState({
         totalPages: 1,
         currentPage: 1,
@@ -16,11 +19,8 @@ function AdminProducts() {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch(
-                "https://ecommerce-app-1-pxaw.onrender.com/api/products",
-                { credentials: "include" }
-            );
-            const data = await response.json();
+            const response = await api.get("/products");
+            const data = response.data;
 
             setProducts(data.products);
             setPagination({
@@ -35,6 +35,11 @@ function AdminProducts() {
 
     return (
         <div className="admin-products">
+            {/* Sidebar */}
+            <AdminSidebar
+                isOpen={sidebarOpen}
+                onClose={() => setSidebarOpen(false)}
+            />
             <div className="admin-header">
             <h1>Product Management</h1>
 

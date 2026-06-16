@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminSidebar from '../../../components/Admin/AdminSidebar';
 import AnalyticsCards, { CompactAnalyticsCards, MetricCard } from '../../../components/Admin/AnalyticsCards';
-import { BarChart3 as ChartBarIcon, Calendar as CalendarIcon, Menu as Bars3Icon, CircleDollarSignIcon } from 'lucide-react';
+import { BarChart3 as ChartBarIcon, ShoppingBag as ShoppingBagIcon, Users as UsersIcon, Calendar as CalendarIcon, Menu as Bars3Icon, CircleDollarSignIcon } from 'lucide-react';
 import { adminService } from '../../../services/adminService';
 import Loading from '@components/Shared/Loading';
 
@@ -178,7 +178,7 @@ const Analytics = () => {
                         key={index}
                         className="flex items-start p-3 bg-blue-50 rounded-lg"
                       >
-                        <ChartBarIcon className="h-5 w-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
+                        <ChartBarIcon className="h-5 w-5 text-blue-600 mt-0.5 mr-3 shrink-0" />
                         <div>
                           <p className="text-sm font-medium text-blue-900">
                             {insight.title}

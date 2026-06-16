@@ -22,7 +22,7 @@ import ProtectedRoute from './components/Auth/ProtectedRoute';
 import AdminRoute from './components/Auth/AdminRoute';
 import Loading from './components/Shared/Loading';
 //import EditProduct from './pages/Admin/Products/EditProduct';
-//import AdminOrders from './pages/Admin/Orders/AdminOrders';
+import AdminOrders from './pages/Admin/Orders/AdminOrders';
 import AdminProducts from './pages/Admin/Products/AdminProducts';
 //import Orders from './pages/User/Orders';
 //import OrderDetails from './pages/User/OrderDetails';
@@ -85,6 +85,14 @@ function App() {
                     <AdminUsers />
                   </AdminRoute>
                 } />
+
+                
+                 <Route path="/admin/orders" element={
+                  <AdminRoute>
+                    <AdminOrders />
+                  </AdminRoute>
+                } />
+                
                 <Route path="/admin/analytics" element={
                   <AdminRoute>
                     <Analytics />
@@ -116,14 +124,6 @@ function App() {
                   </AdminRoute>
                 } />
                 
-
-
-                 <Route path="/admin/orders" element={
-                  <AdminRoute>
-                    <AdminOrders />
-                  </AdminRoute>
-                } />
-
                 */}
           
             </Routes>

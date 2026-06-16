@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import api from "../../../services/api";
+import { toast } from "react-hot-toast";
 
 function AddProduct() {
   const [product, setProduct] = useState({

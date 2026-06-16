@@ -27,8 +27,6 @@ export const adminService = {
   // Get dashboard statistics
   async getDashboardStats() {
     try {
-      console.log(api.defaults.baseURL);
-      console.log(`${api.defaults.baseURL}/analytics/dashboard`);
       const response = await api.get('/analytics/dashboard');
       return response.data;
     } catch (error) {
