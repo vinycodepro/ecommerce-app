@@ -5,6 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 import ProductCard from "../../components/Products/ProductCard"; 
 import Loading from "../../components/Shared/Loading";
+import api from "../../services/api";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ function Products() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://ecommerce-app-1-pxaw.onrender.com/api/products")
+    api.get("/products")
       .then(res => {
         setProducts(res.data.products);
         setLoading(false);

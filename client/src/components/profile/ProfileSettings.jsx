@@ -1,6 +1,7 @@
 // ProfileSettings.jsx
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import api from "../../services/api";
+import toast from "react-hot-toast";
 
 const ProfileSettings = ({ user }) => {
   const [name, setName] = useState("");
@@ -11,29 +12,25 @@ const ProfileSettings = ({ user }) => {
       setName(user.name || "");
       setEmail(user.email || "");
     }
-  }, []);
+  }, [user]);
 
   const handleUpdate = async e => {
     e.preventDefault();
   
     try 
     {
-      const response = await fetch("https://ecommerce-app-1-pxaw.onrender.com/api/users/profile", {
-        credentials: "include",
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email }),
+      const response = await api.put("/users/profile", {
+        name,
+        email
       });
-      if (response.ok) {
-        alert("Profile updated successfully!");
+      if (response.status === 200) {
+        toast.success("Profile updated successfully!");
       } else {
-        alert("Failed to update profile. Please try again.");
+        toast.error("Failed to update profile. Please try again.");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      alert("An error occurred while updating your profile. Please try again.");
+      toast.error("An error occurred while updating your profile. Please try again.");
     }
 
   };

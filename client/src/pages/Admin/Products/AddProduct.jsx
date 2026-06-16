@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import api from "../../../services/api";
 
 function AddProduct() {
   const [product, setProduct] = useState({
@@ -32,16 +33,14 @@ const submitProduct = async () => {
       }
     };
 
-    const res = await axios.post(
-      "https://ecommerce-app-1-pxaw.onrender.com/api/products",
-      formattedProduct,
-      { withCredentials: true }
-    );
+    const res = await api.post("/products", formattedProduct);
 
-    alert("Product added!");
+    toast.success("Product added!");
+
     console.log(res.data);
 
   } catch (error) {
+    toast.error("Failed to add product. Please try again.");
     console.log(error.response?.data);
   }
 };

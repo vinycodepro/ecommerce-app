@@ -21,7 +21,9 @@ const app = express();
 
 const allowedOrigins = [
   "https://ecommerce-app-vert-six.vercel.app",
-  "http://localhost:3000"
+  "http://localhost:3000",
+  "http://localhost:4173"
+  
 ];
 
 app.use(cors({
