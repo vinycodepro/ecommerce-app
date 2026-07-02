@@ -9,9 +9,6 @@ import admin from '../middleware/admin.js';
 
 const router = express.Router();
 
-// @route   GET /api/users/profile
-// @desc    Get current user profile
-// @access  Private
 router.get('/profile', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
@@ -30,9 +27,6 @@ router.get('/profile', auth, async (req, res) => {
   }
 });
 
-// @route   PUT /api/users/profile
-// @desc    Update user profile
-// @access  Private
 router.put('/profile', auth, [
   body('name')
     .optional()
@@ -89,9 +83,6 @@ router.put('/profile', auth, [
   }
 });
 
-// @route   POST /api/users/address
-// @desc    Add a new address
-// @access  Private
 router.post('/address', auth, [
   body('street')
     .trim()

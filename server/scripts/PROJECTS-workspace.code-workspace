@@ -7,5 +7,7 @@
 			"path": "D:/WORK"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "PROJECTS"
+	}
 }

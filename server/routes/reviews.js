@@ -47,7 +47,6 @@ router.post('/', auth, [
       return res.status(404).json({ message: 'Product not found' });
     }
 
-    // Check if user has purchased the product
     const hasPurchased = await Order.findOne({
       user: req.user.id,
       status: 'delivered',

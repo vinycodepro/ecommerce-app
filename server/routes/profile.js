@@ -5,7 +5,6 @@ import User from '../models/User.js';
 
 const router = express.Router();
 
-//this updates profile
 router.put('/profile', auth, [
   body('name')
     .optional()
