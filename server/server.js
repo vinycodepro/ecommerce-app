@@ -21,6 +21,7 @@ const app = express();
 
 const allowedOrigins = [
   "https://ecommerce-app-vert-six.vercel.app",
+  "https://vincyshop.vercel.app",
   "http://localhost:3000",
   "http://localhost:4173"
   
