@@ -19,6 +19,31 @@ function AddProduct() {
     brand: ""
   });
 
+  const handleUpload = async (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const response = await fetch("http://localhost:5000/api/uploads", {
+        method: "POST",
+        body: formData,
+    });
+
+    const data = await response.json();
+
+    setProduct((prev) => ({
+        ...prev,
+        images: [
+            {
+                url: data.url,
+            },
+        ],
+    }));
+};
+
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });
   };
@@ -82,6 +107,12 @@ const submitProduct = async () => {
     })
   }
   className="border border-gray-300 rounded-lg p-3 col-span-1 md:col-span-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+/>
+
+<input
+    type="file"
+    accept="image/*"
+    onChange={handleUpload}
 />
 
     <input

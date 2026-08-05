@@ -69,6 +69,7 @@ import userRoutes from './routes/users.js';
 import profileRoutes from './routes/profile.js';
 import analyticsRoutes from './routes/analytics.js';
 import orderRoutes from './routes/orders.js';
+import uploadRoutes from './routes/uploads.js';
 
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
@@ -77,6 +78,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/uploads', uploadRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
