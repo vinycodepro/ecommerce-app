@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import api from "../../../services/api";
 import { toast } from "react-hot-toast";
+import { Link }from 'react-router-dom';
+//const [image, setImage] = useState(null);
 
 function AddProduct() {
   const [product, setProduct] = useState({
@@ -73,9 +75,13 @@ const submitProduct = async () => {
 
   return (
 <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md">
+  
+<Link
+  to="/admin/products/add" >
   <h2 className="text-2xl font-semibold mb-6 text-gray-800">
     Add New Product
   </h2>
+</Link>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
     <input

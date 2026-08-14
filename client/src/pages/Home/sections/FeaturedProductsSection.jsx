@@ -10,9 +10,12 @@ export default function FeaturedProductsSection() {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      
       try {
         const data = await productService.getProducts({ featured: true, limit: 8 });
         setProducts(data.products);
+          console.log(data.products.length);
+  console.log(data.products);
       } catch (err) {
         console.error(err);
       } finally {
@@ -22,7 +25,9 @@ export default function FeaturedProductsSection() {
     fetchProducts();
   }, []);
 
+
   if (loading) return <Loading />;
+  
 
   return (
     <section className="bg-gray-50 py-16">

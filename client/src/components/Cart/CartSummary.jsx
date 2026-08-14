@@ -115,25 +115,42 @@ const CartSummary = ({ onCheckout, showCheckoutButton = true, className = '' }) 
   };
 
   // Handle checkout
-  const handleCheckout = () => {
-    if (cart.length === 0) {
-      toast.error('Your cart is empty');
-      return;
-    }
+const handleCheckout = () => {
+  console.log('=== CHECKOUT START ===');
 
-    if (!isAuthenticated) {
-      toast.error('Please login to checkout');
-      navigate('/login', { state: { from: '/checkout' } });
-      return;
-    }
+  console.log('cart:', cart);
+  console.log('cart.length:', cart.length);
 
-    if (onCheckout) {
-      onCheckout();
-    } else {
-      navigate('/checkout');
-    }
-  };
+  if (cart.length === 0) {
+    console.log('STOP: cart is empty');
+    return;
+  }
 
+  console.log('cart check passed');
+
+  console.log('isAuthenticated:', isAuthenticated);
+
+  if (!isAuthenticated) {
+    console.log('STOP: user is not authenticated');
+    navigate('/login', { state: { from: '/checkout' } });
+    return;
+  }
+
+  console.log('authentication check passed');
+
+  console.log('onCheckout:', onCheckout);
+  console.log('onCheckout type:', typeof onCheckout);
+
+  if (onCheckout) {
+    console.log('CALLING onCheckout');
+    onCheckout();
+  } else {
+    console.log('NAVIGATING TO /checkout');
+    navigate('/checkout');
+  }
+
+  console.log('=== CHECKOUT END ===');
+};
   // Handle clear cart
   const handleClearCart = () => {
     if (cart.length === 0) return;
@@ -333,7 +350,7 @@ const CartSummary = ({ onCheckout, showCheckoutButton = true, className = '' }) 
         {/* Additional Information */}
         <div className="bg-blue-50 rounded-lg p-3">
           <div className="flex items-start">
-            <InformationCircleIcon className="h-5 w-5 text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
+            <InformationCircleIcon className="h-5 w-5 text-blue-400 mr-2 mt-0.5 shrink-0" />
             <div className="text-sm text-blue-700">
               <p className="font-medium">Free returns within 30 days</p>
               <p className="mt-1">Not satisfied? Return your order for free.</p>

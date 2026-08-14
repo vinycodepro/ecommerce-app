@@ -26,7 +26,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Category is required'],
     enum: {
-      values: ['clothing', 'gadgets', 'civil-engineering-tools'],
+      values: ['clothing', 'gadgets', 'civil-engineering-tools', 'footware', 'others'],
       message: 'Category is not supported'
     }
   },

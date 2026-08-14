@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './contexts/AuthContext';
 import { CartProvider } from './contexts/CartContext';
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import Home from './pages/Home/Home';
@@ -34,6 +35,7 @@ import AdminProducts from './pages/Admin/Products/AdminProducts';
 function App() {
   return (
     <Router>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
       <AuthProvider>
         <CartProvider>
           <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -53,13 +55,8 @@ function App() {
                 {/* Protected Routes */}
                 <Route element={<ProtectedRoute />}>
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="/checkout" element={<Checkout />} />
                 </Route>
-
-               <Route path="/checkout" element={
-                  <ProtectedRoute>
-                    <Checkout />
-                  </ProtectedRoute>
-                } />
 
                 {/*admin routes */}
 
@@ -150,6 +147,7 @@ function App() {
           </div>
         </CartProvider>
       </AuthProvider>
+      </GoogleOAuthProvider>
     </Router>
   );
 }
