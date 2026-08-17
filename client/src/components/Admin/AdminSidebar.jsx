@@ -17,7 +17,7 @@ const SidebarContent = ({ navigation, secondaryNavigation, onClose, isMobile }) 
     {/* Sidebar header */}
     <div className="flex items-center justify-between h-16 px-4 bg-gray-800">
       <div className="flex items-center">
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">VS</span>
           </div>
@@ -50,7 +50,7 @@ const SidebarContent = ({ navigation, secondaryNavigation, onClose, isMobile }) 
                 item.current ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
               }`}
             >
-              <item.icon className={`flex-shrink-0 h-5 w-5 mr-3 ${item.current ? 'text-blue-400' : 'text-gray-400 group-hover:text-gray-300'}`} />
+              <item.icon className={`shrink-0 h-5 w-5 mr-3 ${item.current ? 'text-blue-400' : 'text-gray-400 group-hover:text-gray-300'}`} />
               {item.name}
             </Link>
           ))}
@@ -68,7 +68,7 @@ const SidebarContent = ({ navigation, secondaryNavigation, onClose, isMobile }) 
                 item.current ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white'
               }`}
             >
-              <item.icon className={`flex-shrink-0 h-5 w-5 mr-3 ${item.current ? 'text-blue-400' : 'text-gray-400 group-hover:text-gray-300'}`} />
+              <item.icon className={`shrink-0 h-5 w-5 mr-3 ${item.current ? 'text-blue-400' : 'text-gray-400 group-hover:text-gray-300'}`} />
               {item.name}
             </Link>
           ))}
@@ -76,9 +76,9 @@ const SidebarContent = ({ navigation, secondaryNavigation, onClose, isMobile }) 
       </nav>
 
       {/* User info */}
-      <div className="flex-shrink-0 border-t border-gray-700 p-4">
+      <div className="shrink-0 border-t border-gray-700 p-4">
         <div className="flex items-center">
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <div className="h-8 w-8 bg-gray-600 rounded-full flex items-center justify-center">
               <span className="text-white text-sm font-medium">A</span>
             </div>
