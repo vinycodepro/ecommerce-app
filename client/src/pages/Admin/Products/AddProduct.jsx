@@ -3,6 +3,7 @@ import axios from "axios";
 import api from "../../../services/api";
 import { toast } from "react-hot-toast";
 import { Link }from 'react-router-dom';
+import { uploadService } from '../../../services/uploadService';
 //const [image, setImage] = useState(null);
 
 function AddProduct() {
@@ -26,25 +27,26 @@ function AddProduct() {
 
     if (!file) return;
 
-    const formData = new FormData();
-    formData.append("image", file);
+    try {
+      const data = await uploadService.uploadImage(file);
 
-    const response = await fetch("http://localhost:5000/api/uploads", {
-        method: "POST",
-        body: formData,
-    });
-
-    const data = await response.json();
-
-    setProduct((prev) => ({
+      setProduct((prev) => ({
         ...prev,
         images: [
-            {
-                url: data.url,
-            },
+          {
+            url: data.url,
+            publicId: data.publicId,
+            alt: file.name
+          },
         ],
-    }));
-};
+      }));
+
+      toast.success('Image uploaded');
+    } catch (error) {
+      console.error('Upload error:', error);
+      toast.error('Image upload failed');
+    }
+  };
 
   const handleChange = (e) => {
     setProduct({ ...product, [e.target.name]: e.target.value });

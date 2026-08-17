@@ -17,7 +17,15 @@ dotenv.config();
 
 connectDB();
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 const app = express();
+
+// Serve local uploads for development fallback (when Cloudinary is not configured)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const allowedOrigins = [
   "https://ecommerce-app-vert-six.vercel.app",

@@ -1,20 +1,13 @@
 import express from "express";
-import multer from "multer";
-import cloudinary from "../config/cloudinary.js";
+import upload from "../middleware/multer.js";
+import { uploadImage, deleteImage } from "../controllers/uploadController.js";
 
 const router = express.Router();
 
-const upload = multer({ dest: "uploads/" });
+// POST /api/uploads/upload - uses memory multer and streams to Cloudinary in controller
+router.post("/upload", upload.single("image"), uploadImage);
 
-router.post(
-    "/upload",
-    upload.single("image"),
-    async (req, res) => {
-
-        const result = await cloudinary.uploader.upload(req.file.path);
-
-        res.json(result);
-    }
-);
+// DELETE /api/uploads/image/:publicId - delete image from Cloudinary or local storage
+router.delete('/image/:publicId', deleteImage);
 
 export default router;

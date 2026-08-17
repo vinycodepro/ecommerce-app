@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Menu,
@@ -14,18 +14,20 @@ import Searchbar from "../UI/Searchbar";
 import NavItem from "./Navbar/NavItem";
 import UserMenu from "./UserMenu";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const { user, logout, isAuthenticated } = useAuth();
   const { getCartItemCount } = useCart();
   const navigate = useNavigate();
   const cartCount = getCartItemCount();
+
   const handleLogout = () => {
     logout();
     navigate("/");
     setOpen(false);
   };
+
   const location = useLocation();
   
   useEffect(() => {
@@ -39,6 +41,16 @@ export default function Navbar() {
       document.body.style.overflow = "auto";
     }
   }, [open]);
+
+  const handleSearch = (closeDrawer = false) => {
+    if (searchQuery && searchQuery.trim()) {
+      navigate(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      navigate('/products');
+    }
+    if (closeDrawer) setOpen(false);
+  };
+
   return (
 
     <nav
@@ -77,7 +89,12 @@ export default function Navbar() {
           </div>
           {/* SEARCH */}
           <div className="flex-1 flex justify-center">
-            <Searchbar className=" w-full max-w-xl" />
+            <Searchbar
+              className=" w-full max-w-xl"
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              onSearch={() => handleSearch(false)}
+            />
           </div>
           {/* ACTIONS */}
           <div className="flex items-center gap-5">
@@ -243,7 +260,12 @@ export default function Navbar() {
           </button>
         </div>
         {/* SEARCH */}
-        <Searchbar className="mb-8"/>
+        <Searchbar
+          className="mb-8"
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          onSearch={() => handleSearch(true)}
+        />
         {/* SHOP */}
         <div className="space-y-2 overflow-y-auto max-h-[calc(100dvh-120px)]">
           <p className="text-xs uppercase tracking-widest text-slate-500 mb-2">
