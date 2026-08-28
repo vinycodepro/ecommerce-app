@@ -14,8 +14,7 @@ export default function FeaturedProductsSection() {
       try {
         const data = await productService.getProducts({ featured: true, limit: 8 });
         setProducts(data.products);
-          console.log(data.products.length);
-  console.log(data.products);
+
       } catch (err) {
         console.error(err);
       } finally {
