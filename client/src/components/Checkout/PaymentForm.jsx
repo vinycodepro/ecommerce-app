@@ -6,6 +6,9 @@ import {
   Lock as LockClosedIcon,
 } from 'lucide-react';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import mpesaLogo from '@assets/mpesaLogo.png'; 
+import { BsPaypal } from "react-icons/bs";
+import { FaCcApplePay } from "react-icons/fa";
 
 const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
   const [formData, setFormData] = useState({
@@ -32,9 +35,7 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
       id: 'paypal',
       name: 'PayPal',
       icon: () => (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M7.5 14.25c-.5 0-.9.4-.9.9s.4.9.9.9.9-.4.9-.9-.4-.9-.9-.9zm15-5.25c0 5-4 9-9 9H8.4l-2.9 2.9c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l2.9-2.9H13.5c5 0 9-4 9-9s-4-9-9-9-9 4-9 9c0 1.3.3 2.6.8 3.8.1.3.1.6.1.9 0 .8-.3 1.6-.9 2.2-.6.6-1.4.9-2.2.9-.3 0-.6 0-.9-.1-1.2-.5-2.5-.8-3.8-.8-1.3 0-2.6.3-3.8.8-.3.1-.6.1-.9.1-.8 0-1.6-.3-2.2-.9-.6-.6-.9-1.4-.9-2.2 0-.3 0-.6.1-.9C.3 6.6 0 5.3 0 4c0-5 4-9 9-9s9 4 9 9z"/>
-        </svg>
+        <BsPaypal className="w-6 h-6 text-blue-600" />
       ),
       description: 'Pay with your PayPal account',
     },
@@ -42,12 +43,24 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
       id: 'apple-pay',
       name: 'Apple Pay',
       icon: () => (
-        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-        </svg>
+        <FaCcApplePay className="w-6 h-6 text-black" />
       ),
       description: 'Pay with Apple Pay',
     },
+
+ // M-Pesa
+  {
+    id: 'mpesa',
+    name: 'M-Pesa',
+    icon: () => (
+      <img
+        src={mpesaLogo}
+        alt="M-Pesa"
+        className="w-6 h-6 object-contain"
+      />
+    ),
+    description: 'Pay securely using M-Pesa',
+     },
   ];
 
   useEffect(() => {
@@ -513,9 +526,7 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
         <div className="text-center">
           <div className="bg-yellow-50 rounded-lg p-6">
             <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-yellow-600" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7.5 14.25c-.5 0-.9.4-.9.9s.4.9.9.9.9-.4.9-.9-.4-.9-.9-.9zm15-5.25c0 5-4 9-9 9H8.4l-2.9 2.9c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l2.9-2.9H13.5c5 0 9-4 9-9s-4-9-9-9-9 4-9 9c0 1.3.3 2.6.8 3.8.1.3.1.6.1.9 0 .8-.3 1.6-.9 2.2-.6.6-1.4.9-2.2.9-.3 0-.6 0-.9-.1-1.2-.5-2.5-.8-3.8-.8-1.3 0-2.6.3-3.8.8-.3.1-.6.1-.9.1-.8 0-1.6-.3-2.2-.9-.6-.6-.9-1.4-.9-2.2 0-.3 0-.6.1-.9C.3 6.6 0 5.3 0 4c0-5 4-9 9-9s9 4 9 9z"/>
-              </svg>
+              <BsPaypal className="w-8 h-8 text-blue-600" />
             </div>
             <h3 className="text-lg font-medium text-gray-900 mb-2">
               PayPal Checkout
@@ -526,7 +537,7 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
             <button
               type="button"
               onClick={() => onPaymentSubmit({ method: 'paypal' })}
-              className="w-full bg-yellow-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200"
+              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-200"
             >
               Continue with PayPal
             </button>
@@ -539,9 +550,7 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
         <div className="text-center">
           <div className="bg-black rounded-lg p-6">
             <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-              </svg>
+              <FaCcApplePay className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-lg font-medium text-white mb-2">
               Apple Pay
@@ -555,6 +564,34 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
               className="w-full bg-white text-black py-3 px-4 rounded-lg font-semibold hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-colors duration-200"
             >
               Continue with Apple Pay
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* M-Pesa Payment */}
+      {formData.method === 'mpesa' && (
+        <div className="text-center">
+          <div className="bg-green-50 rounded-lg p-6">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <img
+                src={mpesaLogo}
+                alt="M-Pesa"
+                className="w-8 h-8 object-contain"
+              />
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">
+              M-Pesa Checkout
+            </h3>
+            <p className="text-sm text-gray-600 mb-4">
+              You'll be redirected to M-Pesa to complete your payment securely
+            </p>
+            <button
+              type="button"
+              onClick={() => onPaymentSubmit({ method: 'mpesa' })}
+              className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+            >
+              Continue with M-Pesa
             </button>
           </div>
         </div>

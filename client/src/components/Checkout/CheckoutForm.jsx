@@ -16,7 +16,6 @@ import { useAuth } from '../../contexts/AuthContext';
 import { orderService } from '../../services/orderService';
 import toast from 'react-hot-toast';
 
-console.log('CheckoutForm.jsx loaded');
 const CheckoutForm = () => {
   const navigate = useNavigate();
   const { cart, getCartTotal, getCartItemCount, clearCart } = useCart();
