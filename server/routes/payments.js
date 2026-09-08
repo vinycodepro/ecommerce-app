@@ -12,9 +12,7 @@ import admin from '../middleware/admin.js';
 const router = express.Router();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// @route   POST /api/payments/create-payment-intent
-// @desc    Create Stripe payment intent
-// @access  Private
+
 router.post('/create-payment-intent', auth, [
   body('orderId')
     .isMongoId()

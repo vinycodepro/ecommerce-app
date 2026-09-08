@@ -20,7 +20,7 @@ router.put('/profile', auth, [
     }
 
     const { name, avatar } = req.body;
-    // Find user and update profile
+    
     const user = await User.findById(req.user.id);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });

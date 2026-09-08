@@ -11,9 +11,6 @@ import admin from '../middleware/admin.js';
 
 const router = express.Router();
 
-// @route   POST /api/orders
-// @desc    Create a new order
-// @access  Private
 router.post('/', auth, [
   body('items')
     .isArray({ min: 1 })
@@ -237,9 +234,7 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
-// @route   PUT /api/orders/:id/status
-// @desc    Update order status (Admin only)
-// @access  Private/Admin
+
 router.put('/:id/status', auth, admin, [
   body('status')
     .isIn(['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled'])

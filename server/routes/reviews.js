@@ -9,9 +9,6 @@ import admin from '../middleware/admin.js';
 
 const router = express.Router();
 
-// @route   POST /api/reviews
-// @desc    Create a new review
-// @access  Private
 router.post('/', auth, [
   body('productId')
     .isMongoId()
@@ -98,9 +95,7 @@ router.post('/', auth, [
   }
 });
 
-// @route   GET /api/reviews/product/:productId
-// @desc    Get reviews for a product
-// @access  Public
+
 router.get('/product/:productId', async (req, res) => {
   try {
     const { 
@@ -210,9 +205,6 @@ router.get('/user', auth, async (req, res) => {
   }
 });
 
-// @route   GET /api/reviews/:id
-// @desc    Get single review
-// @access  Public
 router.get('/:id', async (req, res) => {
   try {
     const review = await Review.findById(req.params.id)
@@ -233,9 +225,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// @route   PUT /api/reviews/:id
-// @desc    Update a review
-// @access  Private
 router.put('/:id', auth, [
   body('rating')
     .optional()
