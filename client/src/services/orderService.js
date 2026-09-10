@@ -4,7 +4,7 @@ import api from './api';
 export const orderService = {
   // Create a new order
   async createOrder(orderData) {
-    console.log('Creating order with data:', orderData);
+console.log("ORDER DATA BEING SENT:", JSON.stringify(orderData, null, 2));
     const response = await api.post('/orders', orderData);
     return response.data;
   },
