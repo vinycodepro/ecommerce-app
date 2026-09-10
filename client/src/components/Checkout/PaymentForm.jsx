@@ -5,7 +5,7 @@ import {
   Info as InformationCircleIcon,
   Lock as LockClosedIcon,
 } from 'lucide-react';
-import { CheckCircleIcon } from '@heroicons/react/24/outline';
+import { CircleCheck } from 'lucide-react';
 import mpesaLogo from '@assets/mpesaLogo.png'; 
 import { BsPaypal } from "react-icons/bs";
 import { FaCcApplePay } from "react-icons/fa";
@@ -342,7 +342,7 @@ const PaymentForm = ({ onPaymentSubmit, initialData = null }) => {
                   </div>
                 </div>
                 {formData.method === method.id && (
-                  <CheckCircleIcon className="h-5 w-5 text-blue-600" />
+                  <CircleCheck className="h-5 w-5 text-blue-600" />
                 )}
               </div>
             </label>

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowUpDown as ChevronUpDownIcon,
-  CircleCheck as CircleCheckIcon,
   Clock as ClockIcon,
   Eye as EyeIcon,
   Filter as FunnelIcon,
@@ -13,6 +12,7 @@ import {
   XCircle as XCircleIcon,
   FileText as FileTextIcon,
 } from 'lucide-react';
+import { CircleCheck } from 'lucide-react';
 import { adminService } from '../../services/adminService';
 import toast from 'react-hot-toast';
 
@@ -44,10 +44,10 @@ const OrderList = ({ orders, loading, onOrderUpdate, onRefresh }) => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       pending: { color: 'bg-yellow-100 text-yellow-800', icon: ClockIcon },
-      confirmed: { color: 'bg-blue-100 text-blue-800', icon: CircleCheckIcon },
+      confirmed: { color: 'bg-blue-100 text-blue-800', icon: CircleCheck },
       processing: { color: 'bg-indigo-100 text-indigo-800', icon: PencilIcon },
       shipped: { color: 'bg-purple-100 text-purple-800', icon: TruckIcon },
-      delivered: { color: 'bg-green-100 text-green-800', icon: CircleCheckIcon },
+      delivered: { color: 'bg-green-100 text-green-800', icon: CircleCheck },
       cancelled: { color: 'bg-red-100 text-red-800', icon: XCircleIcon },
     };
 
@@ -338,7 +338,7 @@ const OrderList = ({ orders, loading, onOrderUpdate, onRefresh }) => {
                           className="text-green-600 hover:text-green-900 p-1 rounded disabled:opacity-50"
                           title="Confirm Order"
                         >
-                          <CheckCircleIcon className="h-4 w-4" />
+                          <CircleCheck className="h-4 w-4" />
                         </button>
                       )}
 
@@ -371,7 +371,7 @@ const OrderList = ({ orders, loading, onOrderUpdate, onRefresh }) => {
                           className="text-green-600 hover:text-green-900 p-1 rounded disabled:opacity-50"
                           title="Mark as Delivered"
                         >
-                          <CheckCircleIcon className="h-4 w-4" />
+                          <CircleCheck className="h-4 w-4" />
                         </button>
                       )}
 
