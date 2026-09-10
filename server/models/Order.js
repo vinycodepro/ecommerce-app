@@ -1,11 +1,18 @@
 // models/Order.js
 import mongoose from 'mongoose';
 
+const generateOrderNumber = () =>
+  `ORD-${Date.now()}-${Math.random()
+    .toString(36)
+    .substring(2, 8)
+    .toUpperCase()}`;
+
 const orderSchema = new mongoose.Schema({
   orderNumber: {
     type: String,
     unique: true,
-    required: true
+    required: true,
+    default: generateOrderNumber
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -85,18 +92,6 @@ const orderSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
-});
-
-// Generate order number before saving
-orderSchema.pre('validate', function(next) {
-  if (this.isNew && !this.orderNumber) {
-    this.orderNumber = `ORD-${Date.now()}-${Math.random()
-      .toString(36)
-      .substring(2, 8)
-      .toUpperCase()}`;
-  }
-
-  next();
 });
 
 export default mongoose.model('Order', orderSchema);

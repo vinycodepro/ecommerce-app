@@ -1,5 +1,5 @@
 // server/routes/orders.js
-import monngoose from 'mongoose';
+import mongoose from 'mongoose';
 import express from 'express';
 import { body, validationResult } from 'express-validator';
 import Order from '../models/Order.js';
@@ -167,6 +167,15 @@ router.post('/', auth, [
     });
   } catch (error) {
     console.error('Create order error:', error);
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({
+        message: 'Order validation failed',
+        errors: Object.values(error.errors).map(({ path, message }) => ({
+          path,
+          message
+        }))
+      });
+    }
     res.status(500).json({ message: 'Server error creating order' });
   }
 });
