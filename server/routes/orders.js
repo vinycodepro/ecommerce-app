@@ -58,6 +58,7 @@ router.post('/', auth, [
         });
       }
 
+      // Only validate stock here; do not reduce inventory yet
       if (product.inventory.stock < item.quantity) {
         return res.status(400).json({ 
           message: `Insufficient stock for: ${product.name}. Available: ${product.inventory.stock}` 
@@ -73,10 +74,6 @@ router.post('/', auth, [
         price: product.price,
         attributes: item.attributes || {}
       });
-
-      // Update product stock
-      product.inventory.stock -= item.quantity;
-      await product.save();
     }
 
     // Apply coupon if provided
@@ -124,11 +121,6 @@ router.post('/', auth, [
 
       // Ensure discount doesn't exceed subtotal
       discountAmount = Math.min(discountAmount, subtotal);
-
-      // Update coupon usage
-      coupon.usedCount += 1;
-      coupon.usedBy.push(req.user.id);
-      await coupon.save();
     }
 
     // Calculate totals
