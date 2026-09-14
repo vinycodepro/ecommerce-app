@@ -4,9 +4,14 @@ import api from './api';
 export const orderService = {
   // Create a new order
   async createOrder(orderData) {
-console.log("ORDER DATA BEING SENT:", JSON.stringify(orderData, null, 2));
-    const response = await api.post('/orders', orderData);
-    return response.data;
+    console.log('ORDER DATA BEING SENT:', JSON.stringify(orderData, null, 2));
+    try {
+      const response = await api.post('/orders', orderData);
+      return response.data;
+    } catch (error) {
+      console.log('AXIOS ERROR RESPONSE DATA:', error.response?.data);
+      throw error;
+    }
   },
 
   // Get user's orders

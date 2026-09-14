@@ -28,7 +28,7 @@ const CheckoutForm = () => {
   const [formData, setFormData] = useState({
     shippingAddress: null,
     billingAddress: null,
-    paymentMethod: 'card',
+    paymentMethod: 'paypal',
     paymentDetails: null,
     shippingMethod: 'standard',
     useSameAddress: true,
@@ -60,7 +60,7 @@ const CheckoutForm = () => {
     setFormData(prev => ({
       ...prev,
       shippingAddress: addressData,
-      billingAddress: prev.useSameAddress ? addressData : prev.billingAddress
+      billingAddress: prev.useSameAddress ? addressData : prev.billingAddress,
     }));
     setCurrentStep(2);
     toast.success('Shipping address saved');
@@ -106,21 +106,23 @@ const CheckoutForm = () => {
   };
 
   const validateForm = () => {
+    const finalBillingAddress =
+      formData.useSameAddress && formData.shippingAddress
+        ? formData.shippingAddress
+        : formData.billingAddress;
+
     if (!formData.shippingAddress) {
-      toast.error('Please provide a shipping address');
-      setCurrentStep(1);
+      toast.error('Please enter a shipping address');
       return false;
     }
 
-    if (!formData.billingAddress) {
-      toast.error('Please provide a billing address');
-      setCurrentStep(1);
+    if (!finalBillingAddress) {
+      toast.error('Please enter a billing address');
       return false;
     }
 
     if (!formData.paymentDetails) {
-      toast.error('Please provide payment details');
-      setCurrentStep(2);
+      toast.error('Please enter a payment method');
       return false;
     }
 
@@ -128,6 +130,33 @@ const CheckoutForm = () => {
   };
 
   const handlePlaceOrder = async () => {
+    const finalBillingAddress =
+      formData.useSameAddress && formData.shippingAddress
+        ? formData.shippingAddress
+        : formData.billingAddress;
+
+    const orderPayload = {
+      items: cart.map(item => ({
+        product: item.product._id,
+        quantity: item.quantity,
+        attributes: item.attributes || {},
+        price: item.product.price,
+      })),
+      shippingAddress: formData.shippingAddress,
+      billingAddress: finalBillingAddress,
+      paymentMethod: formData.paymentMethod,
+      paymentDetails: formData.paymentDetails,
+      shippingMethod: formData.shippingMethod,
+      notes: formData.notes,
+      couponCode: formData.couponCode,
+      subtotal: getCartTotal(),
+      shippingCost,
+      total: getCartTotal() + shippingCost,
+      userId: user?._id,
+    };
+
+    console.log('FINAL ORDER PAYLOAD:', JSON.stringify(orderPayload, null, 2));
+
     if (!validateForm()) {
       return;
     }
@@ -135,41 +164,16 @@ const CheckoutForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Prepare order data
-      const orderData = {
-        items: cart.map(item => ({
-          product: item.product._id,
-          quantity: item.quantity,
-          price: item.product.price,
-          attributes: item.attributes
-        })),
-        shippingAddress: formData.shippingAddress,
-        billingAddress: formData.billingAddress,
-        paymentMethod: formData.paymentMethod,
-        shippingMethod: formData.shippingMethod,
-        notes: formData.notes,
-        couponCode: formData.couponCode || undefined,
-      };
-
-      const response = await orderService.createOrder(orderData);
-      
-      toast.success('Order placed successfully!');
-      
-      // Clear cart
-      await clearCart();
-      
-      // Redirect to order confirmation
-      navigate(`/orders/${response.order._id}`, { 
-        state: { 
-          order: response.order,
-          success: true 
-        } 
-      });
-
+      const result = await orderService.createOrder(orderPayload);
+      toast.success('Order placed successfully');
+      clearCart();
+      navigate('/orders');
+      console.log('ORDER CREATED:', result);
     } catch (error) {
-      console.error('Error placing order:', error);
-      const errorMessage = error.response?.data?.message || 'Failed to place order. Please try again.';
-      toast.error(errorMessage);
+      console.error('ORDER SUBMIT ERROR:', error);
+      toast.error(
+        error?.response?.data?.message || 'Unable to place order. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
