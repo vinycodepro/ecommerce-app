@@ -49,6 +49,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const loginWithGoogle = async (credential) => {
+    try {
+      setError('');
+      setLoading(true);
+      const { user: userData } = await authService.loginWithGoogle(credential);
+      setUser(userData);
+      return { success: true };
+    } catch (error) {
+      const message = error.response?.data?.message || 'Google login failed';
+      setError(message);
+      return { success: false, message };
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const register = async (name, email, password) => {
     try {
       setError('');
@@ -93,6 +109,7 @@ const logout = async () => {
     loading,
     error,
     login,
+    loginWithGoogle,
     register,
     logout,
     clearError: () => setError(''),
