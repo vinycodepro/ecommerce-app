@@ -1,71 +1,269 @@
-VincySHOP
+# VincyShop
 
-Vincyweb-Commerce is a modern e-commerce web application that allows users to browse products, place orders, make payments, and track their purchases — all in one seamless online store experience.
+VincyShop is a full-stack e-commerce platform built for a modern online shopping experience. Customers can browse products, manage their cart, place orders, complete payments, and track their purchases through a responsive web application.
 
-It is built with a React frontend and a Node.js + Express backend to ensure speed, scalability, and smooth user interactions.
+The project combines a React frontend with a Node.js and Express backend, MongoDB persistence, and integrations for authentication, payments, email, and media uploads.
 
-🚀 Features
+## Live Services
 
-🛍️ Browse and view products
+- **Backend API:** https://ecommerce-app-1-pxaw.onrender.com/
+- **Repository:** https://github.com/vinycodepro/ecommerce-app
 
-🧾 Place and manage orders
+## Features
 
-💳 Make secure payments
+- Product browsing and catalog management
+- Shopping cart functionality
+- User registration and authentication
+- Google OAuth support
+- User profiles and dashboards
+- Order placement and order history
+- Payment processing with Stripe
+- Product and user image uploads with Cloudinary
+- Analytics endpoints
+- Email-service integration support
+- Responsive user interface
+- API security with Helmet, CORS, and rate limiting
 
-📦 Track purchased products
+## Technology Stack
 
-👤 User account dashboard
+### Frontend
 
-📊 View personal activity and order history
+- React 18
+- Vite
+- React Router
+- Tailwind CSS
+- Axios
+- Framer Motion
+- React Hook Form
+- Chart.js
+- Storybook
 
-🔔 Receive subscriptions and notifications
+### Backend
 
-💬 Get messages when subscribed
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- Prisma
+- JSON Web Tokens
+- Stripe
+- Cloudinary
+- Nodemailer
+- Socket.IO
 
-⚡ And much more
+### Development and Deployment
 
-🛠️ Tech Stack
+- Docker
+- Docker Compose
+- Vercel
+- Render
 
-Frontend:
+## Architecture
 
-React
+```mermaid
+flowchart LR
+    User[Customer / Admin]
+    Client[React Frontend]
+    API[Express REST API]
+    Database[(MongoDB)]
+    Payments[Stripe]
+    Media[Cloudinary]
+    Auth[Google OAuth]
 
-Backend:
+    User --> Client
+    Client --> API
+    API --> Database
+    API --> Payments
+    API --> Media
+    Client --> Auth
+```
 
-Node.js
+The frontend communicates with the backend through REST APIs. The backend handles authentication, products, carts, users, profiles, analytics, orders, and uploads while connecting to MongoDB and external services when required.
 
-Express
+## Project Structure
 
-📦 Installation
+```text
+ecommerce-app/
+├── client/                 # React and Vite frontend
+│   ├── public/
+│   ├── src/
+│   ├── .storybook/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── vite.config.js
+│   └── tailwind.config.js
+│
+├── server/                 # Node.js and Express backend
+│   ├── config/              # Database and service configuration
+│   ├── controllers/         # Request handlers and business logic
+│   ├── middleware/          # Authentication and error handling
+│   ├── models/              # Database models
+│   ├── prisma/              # Prisma configuration and schema files
+│   ├── routes/              # REST API routes
+│   ├── scripts/             # Utility and seed scripts
+│   ├── utils/               # Shared backend utilities
+│   ├── server.js            # API entry point
+│   ├── Dockerfile
+│   └── package.json
+│
+├── docker-compose.yml
+├── ARCHITECTURE.md
+├── README.md
+├── .gitignore
+└── .dockerignore
+```
 
-After cloning or downloading the project, install the dependencies by running:
+## Prerequisites
 
+- Node.js 18 or later
+- npm
+- MongoDB or a MongoDB Atlas database
+- Stripe account for payment features
+- Cloudinary account for image uploads
+- Google OAuth credentials if Google authentication is enabled
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/vinycodepro/ecommerce-app.git
+cd ecommerce-app
+```
+
+Install the frontend dependencies:
+
+```bash
+cd client
 npm install
+```
 
-▶️ Running the App
+Install the backend dependencies:
 
-To start the application, run:
+```bash
+cd ../server
+npm install
+```
 
+## Environment Configuration
+
+Create a `.env` file inside the `server/` directory. Use the variable names required by the enabled services in your local or deployment environment.
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+
+STRIPE_SECRET_KEY=your_stripe_secret_key
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+Never commit secrets or production credentials to the repository.
+
+## Running Locally
+
+Start the backend API:
+
+```bash
+cd server
+npm run dev
+```
+
+Start the frontend in a separate terminal:
+
+```bash
+cd client
+npm run dev
+```
+
+The local services are available at:
+
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5000
+
+The deployed backend API is available at:
+
+```text
+https://ecommerce-app-1-pxaw.onrender.com/
+```
+
+## Docker
+
+Run the frontend and backend services from the repository root:
+
+```bash
+docker-compose up --build
+```
+
+Stop the containers with:
+
+```bash
+docker-compose down
+```
+
+## Available Scripts
+
+### Client
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+npm run storybook
+npm run build-storybook
+```
+
+### Server
+
+```bash
+npm run dev
 npm start
+npm run seed
+```
 
+## API Routes
 
-This will launch the app and make it available locally.
+The backend exposes the following route groups:
 
-📁 Project Structure
+- `/api/auth` — authentication and account access
+- `/api/products` — product operations
+- `/api/cart` — shopping cart operations
+- `/api/users` — user management
+- `/api/profile` — profile operations
+- `/api/analytics` — application analytics
+- `/api/orders` — order management
+- `/api/uploads` — image and file uploads
 
-The project is divided into two main parts:
+## Security
 
-Frontend — Built with React
+The backend includes security and reliability measures such as:
 
-Backend — Built with Node.js and Express
+- Helmet security headers
+- CORS configuration
+- Request rate limiting
+- Cookie parsing
+- Input validation
+- Centralized error handling
+- Environment-based configuration
 
-These work together to handle the user interface, data, authentication, and transactions.
+## Documentation
 
-👨‍💻 Author
+For a detailed technical overview, see [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-Vincyweb
+## License
 
-📜 License
+This project currently has no license. All rights are reserved by the author.
 
-This project currently has no license.
-All rights are reserved by the author.
+## Author
+
+**Vincyweb**
+
+---
+
+Built with React, Node.js, and Express for a scalable ecommerce experience.
