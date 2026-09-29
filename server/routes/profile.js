@@ -18,8 +18,7 @@ router.put('/profile', auth, [
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
-    const { name, avatar } = req.body;
+   const { name, avatar } = req.body;
     
     const user = await User.findById(req.user.id);
     if (!user) {
